@@ -17,3 +17,7 @@ parameters:
 
     # A secret key that's used to generate certain security-related tokens
     secret:            SuperSecretAcademyHashKeyDoNotTellAnyone
+
+
+    facebook_id: 1488838747819918
+    facebook_secret: f3c51118b310a499a0d7ce54f43ab219

@@ -74,8 +74,8 @@ knpu_oauth2_client:
         facebook_main:
             # this will be one of the supported types
             type: facebook
-            client_id: 1488838747819918
-            client_secret: f3c51118b310a499a0d7ce54f43ab219
+            client_id: "%facebook_id%"
+            client_secret: "%facebook_secret%"
             # the route that you're redirected to after
             # see the controller example below
             redirect_route: connect_facebook_check
