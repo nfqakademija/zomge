@@ -1,7 +1,7 @@
-set :application, 'kickstart'
+set :application, 'zomge'
 set :repo_url, '#'
 
-set :deploy_to, '/home/kickstart/'
+set :deploy_to, '/home/zomge/'
 
 set :archive_cache, true
 set :branch, 'master'
