@@ -3,8 +3,8 @@
 namespace AppBundle\Security;
 
 use AppBundle\Entity\User;
-use KnpU\OAuth2ClientBundle\Security\Authenticator\SocialAuthenticator;
 use Doctrine\ORM\EntityManagerInterface;
+use KnpU\OAuth2ClientBundle\Security\Authenticator\SocialAuthenticator;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\RouterInterface;
 use KnpU\OAuth2ClientBundle\Client\Provider\FacebookClient;
@@ -13,7 +13,8 @@ use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
 use Symfony\Component\Security\Core\Exception\AuthenticationException;
 use Symfony\Component\Security\Core\User\UserProviderInterface;
 
-class FacebookAuthenticator extends SocialAuthenticator {
+class FacebookAuthenticator extends SocialAuthenticator
+{
 
     private $clientRegistry;
     private $em;

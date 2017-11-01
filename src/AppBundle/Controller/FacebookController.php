@@ -3,11 +3,11 @@
 namespace AppBundle\Controller;
 
 use Symfony\Component\HttpFoundation\Request;
-use League\OAuth2\Client\Provider\Exception\IdentityProviderException;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Routing\Annotation\Route;
 
-class FacebookController extends Controller {
+class FacebookController extends Controller
+{
 
     /**
      * @Route("/connect/facebook", name="connect_facebook")

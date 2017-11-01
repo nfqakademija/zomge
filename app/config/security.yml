@@ -2,6 +2,9 @@
 # http://symfony.com/doc/current/book/security.html
 security:
 
+#   encoders:
+#       AppBundle\Entity\User: bcrypt
+
     # http://symfony.com/doc/current/book/security.html#where-do-users-come-from-user-providers
     providers:
         fb_users:
@@ -18,7 +21,7 @@ security:
 
             guard:
                 authenticators:
-                    - 'facebook_authenticator'
+                    - AppBundle\Security\FacebookAuthenticator
 
             logout:
                 path: /logout
@@ -29,3 +32,5 @@ security:
 
             # form_login: ~
             # http://symfony.com/doc/current/cookbook/security/form_login_setup.html
+
+#           use_referer: true
