@@ -18,6 +18,8 @@ class AppKernel extends Kernel
 
             new Doctrine\Bundle\MigrationsBundle\DoctrineMigrationsBundle(),
             new KnpU\OAuth2ClientBundle\KnpUOAuth2ClientBundle(),
+            new Avanzu\AdminThemeBundle\AvanzuAdminThemeBundle(),
+            new Knp\Bundle\MenuBundle\KnpMenuBundle(),
 
             new AppBundle\AppBundle(),
         );

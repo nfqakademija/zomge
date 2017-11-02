@@ -36,6 +36,11 @@ twig:
     debug:            "%kernel.debug%"
     strict_variables: "%kernel.debug%"
 
+avanzu_admin_theme:
+        knp_menu:
+            enable : true
+#            breadcrumb_menu: knp-breadcrumb.html.twig
+
 # Doctrine Configuration
 doctrine:
     dbal:

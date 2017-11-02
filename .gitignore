@@ -1,5 +1,4 @@
 /.docker
-/.idea/*
 /app/config/parameters.yml
 /var/*
 !/var/cache
@@ -17,6 +16,7 @@
 /web/css
 /web/js
 /web/fonts
+/web/theme
 /node_modules
 .env
 npm-debug.log
