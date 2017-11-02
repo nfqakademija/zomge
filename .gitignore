@@ -16,7 +16,6 @@
 /web/css
 /web/js
 /web/fonts
-/web/theme
 /node_modules
 .env
 npm-debug.log
