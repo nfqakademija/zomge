@@ -26,7 +26,9 @@
         "incenteev/composer-parameter-handler": "^2.0",
         "league/oauth2-facebook": "^2.0",
         "doctrine/doctrine-migrations-bundle": "^1.2",
-        "knpuniversity/oauth2-client-bundle": "^1.12"
+        "knpuniversity/oauth2-client-bundle": "^1.12",
+        "avanzu/admin-theme-bundle": "dev-feature/2.0",
+        "knplabs/knp-menu-bundle": "^2.1"
     },
     "require-dev": {
         "fzaninotto/faker": "*",
