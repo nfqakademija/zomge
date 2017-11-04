@@ -5,6 +5,7 @@ namespace AppBundle\Security;
 use AppBundle\Entity\User;
 use Doctrine\ORM\EntityManagerInterface;
 use KnpU\OAuth2ClientBundle\Security\Authenticator\SocialAuthenticator;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\RouterInterface;
 use KnpU\OAuth2ClientBundle\Client\Provider\FacebookClient;
@@ -84,6 +85,6 @@ class FacebookAuthenticator extends SocialAuthenticator
 
     public function start(Request $request, AuthenticationException $authException = null)
     {
-        // TODO: Implement start() method.
+        return new RedirectResponse($this->router->generate('homepage'));
     }
 }
