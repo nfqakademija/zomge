@@ -58,6 +58,7 @@ class FacebookAuthenticator extends SocialAuthenticator
         $user->setEmail($facebookUser->getEmail());
         $user->setName($facebookUser->getName());
         $user->setFacebookId($facebookUser->getId());
+        $user->setRoles(['ROLE_USER']);
         $this->em->persist($user);
         $this->em->flush();
 

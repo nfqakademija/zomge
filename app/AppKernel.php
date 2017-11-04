@@ -20,6 +20,7 @@ class AppKernel extends Kernel
             new KnpU\OAuth2ClientBundle\KnpUOAuth2ClientBundle(),
             new Avanzu\AdminThemeBundle\AvanzuAdminThemeBundle(),
             new Knp\Bundle\MenuBundle\KnpMenuBundle(),
+            new Stof\DoctrineExtensionsBundle\StofDoctrineExtensionsBundle(),
 
             new AppBundle\AppBundle(),
         );
