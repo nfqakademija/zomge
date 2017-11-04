@@ -5,11 +5,152 @@
 {% block stylesheets %}
     {{ parent() }}
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.0/css/bulma.min.css">
+
+    <style>
+        html {
+            position: relative;
+            min-height: 100%;
+        }
+        .jumbotron {
+            background-image: linear-gradient(141deg, #04a6d7 0%, #209cee 71%, #3287f5 100%);
+            padding-top: 0;
+        }
+        ul {
+            list-style: none;
+        }
+        li {
+            float: left;
+            color: #FFFFFF;
+            font-size: 20px;
+            line-height: 56px;
+            list-style-type: disc;
+            width: calc(50% - 30px);
+        }
+        .no-gutter > [class*='col-'] {
+            padding-right:0;
+            padding-left:0;
+        }
+        .navbar {
+            margin: 0;
+            background-color: rgba(255, 255, 255, 0.2);
+            border-color: rgba(255, 255, 255, 0);;
+        }
+        .navbar-brand {
+            padding: 5px 15px;
+        }
+        .navbar-brand>img {
+            height: 100%;
+            padding-right: 1rem;
+            width: auto;
+            display: inline;
+        }
+        footer {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            /* Set the fixed height of the footer here */
+            height: 60px;
+            background-color: #f5f5f5;
+        }
+    </style>
+{% endblock %}
+
+{% block jumbotron %}
+    <div class="container pt-1">
+        <div class="row">
+            <div class="col-lg-8 col-xs-12">
+                <h1>Zomge Q1</h1>
+                <hr class="my-4">
+                <div class="d-flex h-100">
+                    <ul class="align-self-center">
+                        <li>Snapdragon™ 835</li>
+                        <li>4GB LPDDR4X</li>
+                        <li>IP68 water and dust resistant</li>
+                        <li>QHD+ Display</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="col-lg-4 d-none d-sm-block d-sm-none d-md-block">
+                <img src="phone1.png" alt="" class="img-responsive">
+            </div>
+        </div>
+    </div>
 {% endblock %}
 
 {% block body %}
-    <div class="box">
+    <div class="container">
+        <div class="text-center mb-3">
+            <h2><strong>BEAUTIFUL PHOTOS</strong></h2>
+            <h6>TAKEN WITH Zomge Q1</h6>
+        </div>
+    </div>
+
+    <div class="row no-gutter">
+        <div class="col-md-3"><img src="{{ asset('images/1.jpeg') }}" class="img-responsive"></div>
+        <div class="col-md-3"><img src="{{ asset('images/2.jpeg') }}" class="img-responsive"></div>
+        <div class="col-md-3"><img src="{{ asset('images/3.jpeg') }}" class="img-responsive"></div>
+        <div class="col-md-3"><img src="{{ asset('images/4.jpeg') }}" class="img-responsive"></div>
+    </div>
+
+    <div class="container mt-4">
+        <h4 class="mb-3"><strong>Basic Parameters</strong></h4>
+
+        <div class="row">
+            <div class="col-md-6 col-xs-6">
+                <strong>Dimensions</strong>
+                <p>148.9 x 68.1 x 8 mm</p>
+            </div>
+            <div class="col-md-6 col-xs-6">
+                <strong>Sensors</strong>
+                <p>Iris scanner, fingerprint (rear-mounted), accelerometer, gyro, proximity, compass, barometer, heart rate, SpO2</p>
+            </div>
+            <div class="col-md-6 col-xs-6">
+                <strong>Weight</strong>
+                <p>155g</p>
+            </div>
+            <div class="col-md-6 col-xs-6">
+                <strong>Color</strong>
+                <p>Midnight Black</p>
+            </div>
+            <div class="col-md-6 col-xs-6">
+                <strong>Battery</strong>
+                <p>Non-removable Li-Ion 3000 mAh battery</p>
+            </div>
+            <div class="col-md-6 col-xs-6">
+                <strong>Operating System</strong>
+                <p>Android 8.0 Oreo</p>
+            </div>
+            <div class="col-md-6 col-xs-6">
+                <strong>CPU</strong>
+                <p>Qualcomm MSM8998 Snapdragon 835 (Octa-core, 10nm, up to 2.45Ghz)</p>
+            </div>
+            <div class="col-md-6 col-xs-6">
+                <strong>Ports</strong>
+                <p>3.1, Type-C 1.0 reversible connector</p>
+                <p>3.5mm audio jack</p>
+            </div>
+            <div class="col-md-6 col-xs-6">
+                <strong>GPU</strong>
+                <p>Adreno 540</p>
+            </div>
+        </div>
+
+        <hr>
+
+        <h4 class="mb-3"><strong>In The Box</strong></h4>
+
+        <div class="row">
+            <div class="col-md-12 col-xs-12">
+                <p>Zomge Q1</p>
+                <p>USB-C to USB-C cable</p>
+                <p>USB-C charging plug</p>
+                <p>Quick Start Guide</p>
+                <p>Sim Tray Ejector</p>
+            </div>
+        </div>
+    </div>
+{#    <div class="box">
         <article class="media">
             {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
             <div class="media-content">
@@ -25,5 +166,5 @@
                 </a>
             {% endif %}
         </article>
-    </div>
+    </div>#}
 {% endblock %}
