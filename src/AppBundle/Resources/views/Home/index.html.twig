@@ -7,24 +7,28 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
     <style>
-        html {
-            position: relative;
-            min-height: 100%;
+        a.navbar-brand {
+            color: #000000;
         }
         .jumbotron {
             background-image: linear-gradient(141deg, #04a6d7 0%, #209cee 71%, #3287f5 100%);
             padding-top: 0;
         }
-        ul {
+        ul.small-info {
             list-style: none;
         }
-        li {
+        ul.small-info li {
             float: left;
             color: #FFFFFF;
             font-size: 20px;
             line-height: 56px;
             list-style-type: disc;
-            width: calc(50% - 30px);
+        }
+        ul.navbar-text {
+            display: flex;
+        }
+        ul.navbar-text li {
+            list-style: none;
         }
         .no-gutter > [class*='col-'] {
             padding-right:0;
@@ -45,11 +49,6 @@
             display: inline;
         }
         footer {
-            position: absolute;
-            bottom: 0;
-            width: 100%;
-            /* Set the fixed height of the footer here */
-            height: 60px;
             background-color: #f5f5f5;
         }
     </style>
@@ -61,17 +60,25 @@
             <div class="col-lg-8 col-xs-12">
                 <h1>Zomge Q1</h1>
                 <hr class="my-4">
-                <div class="d-flex h-100">
-                    <ul class="align-self-center">
-                        <li>Snapdragon™ 835</li>
-                        <li>4GB LPDDR4X</li>
-                        <li>IP68 water and dust resistant</li>
-                        <li>QHD+ Display</li>
+                    <ul class="small-info">
+                        <div class="row">
+                            <div class="col-md-6 col-xs-12">
+                                <li>Snapdragon™ 835</li>
+                            </div>
+                            <div class="col-md-6 col-xs-12">
+                                <li>4GB LPDDR4X</li>
+                            </div>
+                            <div class="col-md-6 col-xs-12">
+                                <li>IP68 water and dust resistant</li>
+                            </div>
+                            <div class="col-md-6 col-xs-12">
+                                <li>QHD+ Display</li>
+                            </div>
+                        </div>
                     </ul>
-                </div>
             </div>
 
-            <div class="col-lg-4 d-none d-sm-block d-sm-none d-md-block">
+            <div class="col-lg-4 hidden-xs">
                 <img src="phone1.png" alt="" class="img-responsive">
             </div>
         </div>
@@ -82,7 +89,7 @@
     <div class="container">
         <div class="text-center mb-3">
             <h2><strong>BEAUTIFUL PHOTOS</strong></h2>
-            <h6>TAKEN WITH Zomge Q1</h6>
+            <h4>TAKEN WITH Zomge Q1</h4>
         </div>
     </div>
 

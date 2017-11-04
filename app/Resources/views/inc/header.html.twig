@@ -16,17 +16,24 @@
 
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse">
-            <p class="navbar-text navbar-right">
-                {% if is_granted('ROLE_ADMIN') %}
-                    <a href="{{ path('admin_index') }}" class="btn btn-default">ADMIN PANEL</a>
-                {% endif %}
+            <ul class="navbar-text navbar-right">
                 {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-                    <a href="{{ path('security_logout') }}" class="btn btn-primary">Logout</a>
+                    <li class="dropdown pr-1">
+                        <a href="#" class="dropdown-toggle btn btn-success" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{ app.user.name }} <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">Orders</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li><a href="{{ path('security_logout') }}">Logout</a></li>
+                        </ul>
+                    </li>
+                    {% if is_granted('ROLE_ADMIN') %}
+                        <li class="pr-1"><a href="{{ path('admin_index') }}" class="btn btn-default">ADMIN PANEL</a></li>
+                    {% endif %}
                 {% else %}
-                    <a href="{{ path('connect_facebook') }}" class="btn btn-primary">Login with Facebook</a>
+                    <a href="{{ path('connect_facebook') }}" class="btn btn-primary mr-1">Login with Facebook</a>
                 {% endif %}
-                <a href="#" class="btn btn-danger">BUY NOW</a>
-            </p>
+                <li><a href="#" class="btn btn-danger">BUY NOW</a></li>
+            </ul>
         </div>
         <!-- /.navbar-collapse -->
     </div>
