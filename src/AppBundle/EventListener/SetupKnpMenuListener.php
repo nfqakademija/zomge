@@ -28,7 +28,7 @@ class SetupKnpMenuListener
 
         // Adds a menu item which has children
         $menu->addChild('UsersItem', [
-                'route'        => 'homepage',
+                'route'        => 'admin_users_index',
                 'label'        => 'Users',
                 'childOptions' => $event->getChildOptions()
             ]
