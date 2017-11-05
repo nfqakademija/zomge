@@ -18,7 +18,7 @@ class Version20171104122621 extends AbstractMigration
         // this up() migration is auto-generated, please modify it to your needs
         $this->abortIf($this->connection->getDatabasePlatform()->getName() !== 'mysql', 'Migration can only be executed safely on \'mysql\'.');
 
-        $this->addSql('ALTER TABLE users ADD roles LONGTEXT NOT NULL COMMENT \'(DC2Type:json_array)\'');
+        $this->addSql('ALTER TABLE Users ADD roles LONGTEXT NOT NULL COMMENT \'(DC2Type:json_array)\'');
     }
 
     /**
@@ -29,6 +29,6 @@ class Version20171104122621 extends AbstractMigration
         // this down() migration is auto-generated, please modify it to your needs
         $this->abortIf($this->connection->getDatabasePlatform()->getName() !== 'mysql', 'Migration can only be executed safely on \'mysql\'.');
 
-        $this->addSql('ALTER TABLE users DROP roles');
+        $this->addSql('ALTER TABLE Users DROP roles');
     }
 }
