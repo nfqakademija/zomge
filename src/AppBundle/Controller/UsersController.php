@@ -40,7 +40,6 @@ class UsersController extends Controller
             $user = $form->getData();
 
             $em = $this->getDoctrine()->getManager();
-            $em->persist($user);
             $em->flush();
 
             $this->addFlash('success', 'User updated!');
