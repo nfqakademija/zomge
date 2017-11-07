@@ -50,6 +50,16 @@ class User implements UserInterface
     private $roles = [];
 
     /**
+     * @ORM\Column(name="facebook_photo", type="string", nullable=true)
+     */
+    private $facebookPhoto;
+
+    /**
+     * @ORM\Column(name="facebook_token", type="string")
+     */
+    private $facebookToken;
+
+    /**
      * @ORM\Column(type="datetime")
      * @Gedmo\Timestampable(on="create")
      */
@@ -179,6 +189,37 @@ class User implements UserInterface
         // TODO: Implement eraseCredentials() method.
     }
 
+    /**
+     * @return mixed
+     */
+    public function getFacebookPhoto()
+    {
+        return $this->facebookPhoto;
+    }
+
+    /**
+     * @param mixed $facebookPhoto
+     */
+    public function setFacebookPhoto($facebookPhoto)
+    {
+        $this->facebookPhoto = $facebookPhoto;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getFacebookToken()
+    {
+        return $this->facebookToken;
+    }
+
+    /**
+     * @param mixed $facebookToken
+     */
+    public function setFacebookToken($facebookToken)
+    {
+        $this->facebookToken = $facebookToken;
+    }
 
 }
 

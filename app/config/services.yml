@@ -22,3 +22,7 @@ services:
     AppBundle\EventListener\SetupKnpMenuListener:
           tags:
               - { name: kernel.event_listener, event: theme.sidebar_setup_knp_menu, method: onSetupMenu }
+
+    AppBundle\EventListener\AuthenticationListener:
+        tags:
+            - { name: kernel.event_listener, event: security.interactive_login , method: onSuccess }

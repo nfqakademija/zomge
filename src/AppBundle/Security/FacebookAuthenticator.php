@@ -16,7 +16,6 @@ use Symfony\Component\Security\Core\User\UserProviderInterface;
 
 class FacebookAuthenticator extends SocialAuthenticator
 {
-
     private $clientRegistry;
     private $em;
     private $router;
@@ -39,25 +38,26 @@ class FacebookAuthenticator extends SocialAuthenticator
 
     public function getUser($credentials, UserProviderInterface $userProvider)
     {
-        /** @var FacebookUser $facebookUser */
-        $facebookUser = $this->getFacebookClient()
-            ->fetchUserFromToken($credentials);
+        $client = $this->getFacebookClient();
 
-        // 1) have they logged in with Facebook before? Easy!
-        $existingUser = $this->em->getRepository('AppBundle:User')
+        $facebookUser = $client->fetchUserFromToken($credentials);
+
+        $provider = $client->getOAuth2Provider();
+        $longLivedToken = $provider->getLongLivedAccessToken($credentials);
+
+        $existingUser = $this->em->getRepository(User::class)
             ->findOneBy(['facebookId' => $facebookUser->getId()]);
 
         if ($existingUser) {
             return $existingUser;
         }
 
-        // 3) Maybe you just want to "register" them by creating
-        // a User object
         $user = new User();
 
         $user->setEmail($facebookUser->getEmail());
         $user->setName($facebookUser->getName());
         $user->setFacebookId($facebookUser->getId());
+        $user->setFacebookToken($longLivedToken);
         $user->setRoles(['ROLE_USER']);
         $this->em->persist($user);
         $this->em->flush();
