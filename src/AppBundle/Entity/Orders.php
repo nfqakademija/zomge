@@ -24,7 +24,7 @@ class Orders
 
     /**
      *
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\User")
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\User", inversedBy="user")
      * @ORM\JoinColumn(nullable=false)
      */
     private $user;
@@ -172,6 +172,14 @@ class Orders
     public function getStatus()
     {
         return $this->status;
+    }
+
+    /**
+     * @return \DateTime
+     */
+    public function getCreatedAt()
+    {
+        return $this->createdAt;
     }
 
 }

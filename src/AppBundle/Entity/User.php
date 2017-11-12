@@ -2,6 +2,7 @@
 
 namespace AppBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
 use Symfony\Component\Security\Core\User\UserInterface;
@@ -80,6 +81,11 @@ class User implements UserInterface
     private $postalCode;
 
     /**
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Orders", mappedBy="orders")
+     */
+    private $orders;
+
+    /**
      * @ORM\Column(type="datetime")
      * @Gedmo\Timestampable(on="create")
      */
@@ -90,6 +96,15 @@ class User implements UserInterface
      * @Gedmo\Timestampable(on="update")
      */
     private $updatedAt;
+
+    /**
+     * User constructor.
+     * @param $orders
+     */
+    public function __construct($orders)
+    {
+        $this->orders = new ArrayCollection();
+    }
 
     /**
      * Get id
@@ -304,5 +319,22 @@ class User implements UserInterface
     {
         $this->postalCode = $postalCode;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getOrders()
+    {
+        return $this->orders;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getCreatedAt()
+    {
+        return $this->createdAt;
+    }
+
 }
 

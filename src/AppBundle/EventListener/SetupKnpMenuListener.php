@@ -33,5 +33,12 @@ class SetupKnpMenuListener
                 'childOptions' => $event->getChildOptions()
             ]
         )->setLabelAttribute('icon', 'fa fa-user');
+
+        $menu->addChild('OrdersItem', [
+                'route'        => 'admin_orders_index',
+                'label'        => 'Orders',
+                'childOptions' => $event->getChildOptions()
+            ]
+        )->setLabelAttribute('icon', 'fa fa-shopping-cart');
     }
 }
