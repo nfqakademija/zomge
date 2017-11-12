@@ -28,8 +28,6 @@ class BuyNowController extends Controller
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
 
-            $user = $em->getRepository(User::class)->find($user);
-
             $file = $form->get('picture')->getData();
             $fileName = $fileUploader->upload($file);
 
