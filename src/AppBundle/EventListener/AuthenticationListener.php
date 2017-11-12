@@ -12,12 +12,20 @@ class AuthenticationListener
     private $clientRegistry;
     private $em;
 
+    /**
+     * AuthenticationListener constructor.
+     * @param ClientRegistry         $clientRegistry
+     * @param EntityManagerInterface $em
+     */
     public function __construct(ClientRegistry $clientRegistry, EntityManagerInterface $em)
     {
         $this->clientRegistry = $clientRegistry;
         $this->em = $em;
     }
 
+    /**
+     * @param InteractiveLoginEvent $event
+     */
     public function onSuccess(InteractiveLoginEvent $event)
     {
         $token = $event->getAuthenticationToken()->getUser()->getFacebookToken();

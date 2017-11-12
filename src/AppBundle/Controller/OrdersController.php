@@ -14,6 +14,7 @@ class OrdersController extends Controller
 
     /**
      * @Route("/", name="admin_orders_index")
+     * @return \Symfony\Component\HttpFoundation\Response
      */
     public function indexAction()
     {
@@ -28,6 +29,8 @@ class OrdersController extends Controller
 
     /**
      * @Route("/{id}/view", name="admin_orders_view")
+     * @param Orders $order
+     * @return \Symfony\Component\HttpFoundation\Response
      */
     public function viewAction(Orders $order)
     {

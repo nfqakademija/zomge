@@ -7,6 +7,9 @@ use Avanzu\AdminThemeBundle\Event\KnpMenuEvent;
 class SetupKnpMenuListener
 {
 
+    /**
+     * @param KnpMenuEvent $event
+     */
     public function onSetupMenu(KnpMenuEvent $event)
     {
         $menu = $event->getMenu();

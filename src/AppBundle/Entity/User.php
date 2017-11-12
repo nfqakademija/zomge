@@ -329,6 +329,8 @@ class User implements UserInterface
     }
 
     /**
+     * Get created at
+     *
      * @return mixed
      */
     public function getCreatedAt()

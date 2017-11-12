@@ -30,6 +30,9 @@ class UsersController extends Controller
 
     /**
      * @Route("/{id}/edit", name="admin_users_edit")
+     * @param Request $request
+     * @param User    $user
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
      */
     public function editAction(Request $request, User $user)
     {

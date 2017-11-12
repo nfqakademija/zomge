@@ -21,6 +21,8 @@ class FacebookController extends Controller
 
     /**
      * @Route("/connect/facebook/check", name="connect_facebook_check")
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse
      */
     public function connectCheckAction(Request $request)
     {

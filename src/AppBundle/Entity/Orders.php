@@ -175,6 +175,8 @@ class Orders
     }
 
     /**
+     * Get created at
+     *
      * @return \DateTime
      */
     public function getCreatedAt()

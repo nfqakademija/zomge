@@ -15,6 +15,9 @@ class BuyNowController extends Controller
 
     /**
      * @Route("/buy_now", name="buy_now")
+     * @param Request      $request
+     * @param FileUploader $fileUploader
+     * @return \Symfony\Component\HttpFoundation\Response
      */
     public function indexAction(Request $request, FileUploader $fileUploader)
     {
@@ -50,6 +53,10 @@ class BuyNowController extends Controller
         ));
     }
 
+    /**
+     * @param int $length
+     * @return string
+     */
     private function orderNumber($length = 10)
     {
         $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
