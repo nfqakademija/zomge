@@ -4,6 +4,7 @@ var gulp    = require('gulp');
 var sass    = require('gulp-sass');
 var concat  = require('gulp-concat');
 var uglify  = require('gulp-uglify');
+var watch = require("gulp-watch-sass")
 
 var dir = {
     assets: './src/AppBundle/Resources/',

@@ -60,6 +60,26 @@ class User implements UserInterface
     private $facebookToken;
 
     /**
+     * @ORM\Column(name="phone_number", type="string")
+     */
+    private $phoneNumber;
+
+    /**
+     * @ORM\Column(name="address", type="string")
+     */
+    private $address;
+
+    /**
+     * @ORM\Column(name="city", type="string")
+     */
+    private $city;
+
+    /**
+     * @ORM\Column(name="postal_code", type="string")
+     */
+    private $postalCode;
+
+    /**
      * @ORM\Column(type="datetime")
      * @Gedmo\Timestampable(on="create")
      */
@@ -221,5 +241,68 @@ class User implements UserInterface
         $this->facebookToken = $facebookToken;
     }
 
+    /**
+     * @return mixed
+     */
+    public function getPhoneNumber()
+    {
+        return $this->phoneNumber;
+    }
+
+    /**
+     * @param mixed $phoneNumber
+     */
+    public function setPhoneNumber($phoneNumber)
+    {
+        $this->phoneNumber = $phoneNumber;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getAddress()
+    {
+        return $this->address;
+    }
+
+    /**
+     * @param mixed $address
+     */
+    public function setAddress($address)
+    {
+        $this->address = $address;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getCity()
+    {
+        return $this->city;
+    }
+
+    /**
+     * @param mixed $city
+     */
+    public function setCity($city)
+    {
+        $this->city = $city;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPostalCode()
+    {
+        return $this->postalCode;
+    }
+
+    /**
+     * @param mixed $postalCode
+     */
+    public function setPostalCode($postalCode)
+    {
+        $this->postalCode = $postalCode;
+    }
 }
 

@@ -1,0 +1,26 @@
+#phone {
+  background-color: #70818A;
+  width: 250px;
+  height: 500px;
+  border-radius: 20px;
+  position: relative;
+  overflow: hidden;
+  
+    img {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      height: 100%;
+      width: auto;
+      -webkit-transform: translate(-50%, -50%);
+      -moz-transform: translate(-50%, -50%);
+      -ms-transform: translate(-50%, -50%);
+      transform: translate(-50%, -50%);
+    }
+  
+    #camera {
+      width: 100px;
+      height: 50px;
+      top: 15%;
+    }
+}

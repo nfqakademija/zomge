@@ -1,0 +1,48 @@
+{% extends "::base.html.twig" %}
+
+{% block title %}Buy now - {{ parent() }}{% endblock %}
+
+{% block body %}
+    <div class="container" id="app">
+        <div class="row">
+            <div class="col-md-4 col-sm-12">
+                <div id="phone">
+                    <img :src="image">
+                    <img src="{{ asset('images/camera.png') }}" alt="Camera" id="camera">
+                </div>
+            </div>
+            <div class="col-md-8 col-sm-12">
+                {{ form(form) }}
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.3/vue.js"></script>
+
+    <script>
+        let app = new Vue({
+            el: '#app',
+            data: {
+                image: ''
+            },
+            methods: {
+                onChange(e) {
+                    if (! e.target.files.length) return;
+
+                    let file = e.target.files[0];
+
+                    let reader = new FileReader();
+
+                    reader.readAsDataURL(file);
+
+                    reader.onload = e => {
+                        this.image = e.target.result;
+                    }
+                }
+            }
+        })
+    </script>
+{% endblock %}
