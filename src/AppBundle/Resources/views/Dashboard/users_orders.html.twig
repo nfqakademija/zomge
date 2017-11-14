@@ -1,15 +1,13 @@
 {% extends "@App/Dashboard/base.html.twig" %}
 
 {% block avanzu_page_title %}Orders{% endblock %}
+{% block avanzu_page_subtitle %}View {{ user.name }} orders{% endblock %}
 
 {% block avanzu_page_content %}
+
     <div class="box">
         <div class="box-body">
-            <div class="row">
-                <div class="col-sm-12">
-                    {% include 'AppBundle:Dashboard:_orders_list.html.twig' %}
-                </div>
-            </div>
+            {% include 'AppBundle:Dashboard:_orders_list.html.twig' %}
         </div>
     </div>
 

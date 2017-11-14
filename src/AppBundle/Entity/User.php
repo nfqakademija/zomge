@@ -81,7 +81,7 @@ class User implements UserInterface
     private $postalCode;
 
     /**
-     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Orders", mappedBy="orders")
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Orders", mappedBy="user")
      */
     private $orders;
 

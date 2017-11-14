@@ -24,7 +24,10 @@
                                 <td>{{ user.name }}</td>
                                 <td>{{ user.email }}</td>
                                 <td>{{ user.createdAt|date('Y-m-d') }}</td>
-                                <td><a href="{{ path('admin_users_edit', {'id': user.id}) }}" class="btn btn-default">Edit</a></td>
+                                <td>
+                                    <a href="{{ path('admin_users_edit', {'id': user.id}) }}" class="btn btn-default">Edit</a>
+                                    <a href="{{ path('admin_users_orders', {'id': user.id}) }}" class="btn btn-primary">Orders</a>
+                                </td>
                             </tr>
                         {% endfor %}
                         </tbody>

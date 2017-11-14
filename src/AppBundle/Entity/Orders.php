@@ -24,7 +24,7 @@ class Orders
 
     /**
      *
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\User", inversedBy="user")
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\User", inversedBy="orders")
      * @ORM\JoinColumn(nullable=false)
      */
     private $user;

@@ -52,4 +52,17 @@ class UsersController extends Controller
             'form' => $form->createView()
         ]);
     }
+
+    /**
+     * @Route("/{id}/orders", name="admin_users_orders")
+     * @param User $user
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function viewOrderAction(User $user)
+    {
+        return $this->render('AppBundle:Dashboard:users_orders.html.twig', [
+            'user' => $user,
+            'orders' => $user->getOrders()
+        ]);
+    }
 }
