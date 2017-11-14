@@ -1,3 +1,11 @@
+{% block stylesheets %}
+    <style>
+    a.navbar-brand {
+        color: #000;
+    }
+    </style>
+{% endblock %}
+
 <nav class="navbar navbar-default">
     <div class="container">
         <!-- Brand and toggle get grouped for better mobile display -->
@@ -16,24 +24,24 @@
 
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="navbar">
-            <ul class="navbar-text navbar-right">
+            <ul class="nav navbar-nav navbar-right">
                 {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-                    <img src="{{ app.user.facebookPhoto }}" alt="Profile photo" class="mr-1" style="height: 32px;">
-                    <li class="dropdown pr-1">
-                        <a href="#" class="dropdown-toggle btn btn-success" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{ app.user.name }} <span class="caret"></span></a>
+                    <li><img src="{{ app.user.facebookPhoto }}" alt="Profile photo" class="mr-1" style="height: 32px;"></li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle mr-1" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{ app.user.name }} <span class="caret"></span></a>
                         <ul class="dropdown-menu">
-                            <li><a href="#">Orders</a></li>
+                            <li><a href="#">Ordes</a></li>
                             <li role="separator" class="divider"></li>
                             <li><a href="{{ path('security_logout') }}">Logout</a></li>
                         </ul>
                     </li>
                     {% if is_granted('ROLE_ADMIN') %}
-                        <li class="pr-1"><a href="{{ path('admin_index') }}" class="btn btn-default">ADMIN PANEL</a></li>
+                        <li class="pr-1"><a href="{{ path('admin_index') }}">ADMIN PANEL</a></li>
                     {% endif %}
                 {% else %}
-                    <a href="{{ path('connect_facebook') }}" class="btn btn-primary mr-1">Login with Facebook</a>
+                    <li><a href="{{ path('connect_facebook') }}" class="mr-1">Login with Facebook</a></li>
                 {% endif %}
-                <li><a href="{{ path('buy_now') }}" class="btn btn-danger">BUY NOW</a></li>
+                <li><a href="{{ path('buy_now') }}" class="buynow">BUY NOW</a></li>
             </ul>
         </div>
         <!-- /.navbar-collapse -->
