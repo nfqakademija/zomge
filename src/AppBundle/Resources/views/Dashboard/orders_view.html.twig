@@ -1,11 +1,67 @@
 {% extends "@App/Dashboard/base.html.twig" %}
 
+{% block avanzu_head %}
+    <style>
+        #phone {
+            width: 250px;
+            height: 500px;
+            border-radius: 15px;
+            position: relative;
+            overflow: hidden
+        }
+
+        #phone img {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            height: 100%;
+            width: auto;
+            -webkit-transform: translate(-50%, -50%);
+            -moz-transform: translate(-50%, -50%);
+            -ms-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%)
+        }
+
+        #phone #camera {
+            width: 100px;
+            height: 50px;
+            top: 15%
+        }
+    </style>
+{% endblock %}
+
 {% block avanzu_page_title %}Orders{% endblock %}
+{% block avanzu_page_subtitle %}View order #{{ order.orderNumber }}{% endblock %}
 
 {% block avanzu_page_content %}
-    <div class="box">
-        <div class="box-body">
+
+    <div class="row">
+        <div class="col-md-3">
+            <div class="box">
+                <div class="box-body"">
+                    <div id="phone">
+                        <img src="/uploads/{{ order.photo }}">
+                        <img src="{{ asset('images/camera.png') }}" alt="Camera" id="camera">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-9">
+            <div class="box box-success">
+                <div class="box-header with-border">
+                    <h3 class="box-title">Customer detail</h3>
+                </div>
+                <div class="box-body">
+                    <p><strong>Name:</strong> {{ order.user.name }}</p>
+                    <p><strong>Address:</strong> {{ order.user.address }}</p>
+                    <p><strong>City:</strong> {{ order.user.city }}</p>
+                    <p><strong>Postal code:</strong> {{ order.user.postalCode }}</p>
+                    <p><strong>Phone no.:</strong> {{ order.user.phoneNumber }}</p>
+                </div>
+            </div>
         </div>
     </div>
 
 {% endblock %}
+
