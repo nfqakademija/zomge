@@ -1,0 +1,28 @@
+{% extends "::base.html.twig" %}
+
+{% block title %}Order #{{ order.orderNumber }} - {{ parent() }}{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3 col-sm-12">
+                <div id="phone">
+                    <img src="/uploads/{{ order.photo }}">
+                    <img src="{{ asset('images/camera.png') }}" alt="Camera" id="camera">
+                </div>
+            </div>
+            <div class="col-md-9 col-sm-12">
+                <div class="panel panel-success">
+                    <div class="panel-heading">Order #{{ order.orderNumber }}</div>
+                    <div class="panel-body">
+                        <p><strong>Name:</strong> {{ order.user.name }}</p>
+                        <p><strong>Address:</strong> {{ order.user.address }}</p>
+                        <p><strong>City:</strong> {{ order.user.city }}</p>
+                        <p><strong>Postal code:</strong> {{ order.user.postalCode }}</p>
+                        <p><strong>Phone no.:</strong> {{ order.user.phoneNumber }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

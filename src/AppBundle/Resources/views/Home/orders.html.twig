@@ -1,0 +1,32 @@
+{% extends "::base.html.twig" %}
+
+{% block title %}My orders - {{ parent() }}{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <table class="table table-bordered table-striped">
+                    <thead>
+                    <tr>
+                        <th>Order No</th>
+                        <th>Order date</th>
+                        <th>Status</th>
+                        <th></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for order in orders %}
+                        <tr>
+                            <td>{{ order.orderNumber }}</td>
+                            <td>{{ order.createdAt|date('Y-m-d') }}</td>
+                            <td>{{ order.status }}</td>
+                            <td><a href="{{ path('orders_view', {'orderNumber': order.orderNumber}) }}" class="btn btn-default">View</a></td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+{% endblock %}

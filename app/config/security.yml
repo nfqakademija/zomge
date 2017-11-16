@@ -38,3 +38,4 @@ security:
     access_control:
         - { path: ^/admin, roles: ROLE_ADMIN }
         - { path: ^/buy_now, roles: ROLE_USER }
+        - { path: ^/orders, roles: ROLE_USER }
