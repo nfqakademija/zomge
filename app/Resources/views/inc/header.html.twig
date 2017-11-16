@@ -18,9 +18,9 @@
         <div class="collapse navbar-collapse" id="navbar">
             <ul class="nav navbar-nav navbar-right">
                 {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-                    <li><img src="{{ app.user.facebookPhoto }}" alt="Profile photo" class="mr-1" style="height: 32px;"></li>
+                    <li><img src="{{ app.user.facebookPhoto }}" alt="Profile photo" class="hidden-sm hidden-xs" style="height: 50px;"></li>
                     <li class="dropdown">
-                        <a href="#" class="dropdown-toggle mr-1" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{ app.user.name }} <span class="caret"></span></a>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{ app.user.name }} <span class="caret"></span></a>
                         <ul class="dropdown-menu">
                             <li><a href="{{ path('users_orders') }}">Ordes</a></li>
                             <li role="separator" class="divider"></li>

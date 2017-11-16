@@ -45,8 +45,11 @@ nav li a {
 nav li a:hover, nav .open > a {
   background-color: rgba(50, 135, 245, 0.4) !important;
 }
-nav li.dropdown ul a {
-  color: #000 !important;
+nav li.dropdown ul {
+  background-color: rgba(50, 135, 245, 0.3) !important;
+  a {
+    color: #fff !important;
+  }
 }
 .buynow {
   background-color: #d9534f !important;
