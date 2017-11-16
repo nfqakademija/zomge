@@ -42,12 +42,23 @@ ul.navbar-text {
 nav li a {
   color: #fff !important;
 }
+ul.dropdown-menu li a {
+  color: #000000 !important;
+}
 nav li a:hover, nav .open > a {
   background-color: rgba(50, 135, 245, 0.4) !important;
 }
-nav li.dropdown ul {
-  background-color: rgba(50, 135, 245, 0.3) !important;
-  a {
+.navbar-default .navbar-toggle .icon-bar {
+  background-color: #fff;
+}
+@media (max-width: 480px) {
+  nav li.dropdown ul {
+    background-color: rgba(50, 135, 245, 0.3) !important;
+    a {
+      color: #fff !important;
+    }
+  }
+  nav li a {
     color: #fff !important;
   }
 }
