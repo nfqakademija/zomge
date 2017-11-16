@@ -42,6 +42,7 @@ class Orders
      *
      * @ORM\Column(name="photo", type="string", length=255)
      * @Assert\NotBlank()
+     * @Assert\Image()
      */
     private $photo;
 
@@ -68,6 +69,19 @@ class Orders
      */
     private $updatedAt;
 
+    public function __sleep()
+    {
+        $ref   = new \ReflectionClass(__CLASS__);
+        $props = $ref->getProperties(\ReflectionProperty::IS_PROTECTED);
+
+        $serialize_fields = array();
+
+        foreach ($props as $prop) {
+            $serialize_fields[] = $prop->name;
+        }
+
+        return $serialize_fields;
+    }
 
     /**
      * Get id
