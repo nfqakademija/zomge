@@ -51,4 +51,4 @@ gulp.task('watch', function () {
     gulp.watch(dir.assets + 'style/*.scss', ['sass']);
 });
 
-gulp.task('default', ['sass', 'scripts', 'fonts', 'images', 'watch']);
+gulp.task('default', ['sass', 'scripts', 'fonts', 'images']);

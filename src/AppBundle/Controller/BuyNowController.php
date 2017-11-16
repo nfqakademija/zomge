@@ -22,19 +22,21 @@ class BuyNowController extends Controller
     public function indexAction(Request $request, FileUploader $fileUploader)
     {
         $user = $this->getUser();
-        $form = $this->createForm(BuyNowForm::class, null, ['user' => $user]);
+        $form = $this->createForm(BuyNowForm::class, $user);
 
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
+            $form = $form->getData();
 
-            $file = $form->get('picture')->getData();
+            $file = $form->getPhoto()->getPhoto();
+
             $fileName = $fileUploader->upload($file);
 
-            $user->setPhoneNumber($form->get('phone_number')->getData());
-            $user->setAddress($form->get('address')->getData());
-            $user->setCity($form->get('city')->getData());
-            $user->setPostalCode($form->get('postal_code')->getData());
+            /*$user->setPhoneNumber($form->getPhoneNumber());
+            $user->setAddress($form->getAddress());
+            $user->setCity($form->getCity());
+            $user->setPostalCode($form->getPostalCode());*/
 
             $order = new Orders();
             $order->setOrderNumber($this->orderNumber());
@@ -44,6 +46,10 @@ class BuyNowController extends Controller
 
             $em->persist($order);
             $em->flush();
+
+            $this->addFlash('success', 'Yay! Your order have been accepted.');
+
+            return $this->redirectToRoute('buy_now');
         }
 
         return $this->render('AppBundle:Home:buy_now.html.twig', array(

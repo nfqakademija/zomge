@@ -1,6 +1,6 @@
 <?php
 
-namespace AppBundle\Form;
+namespace AppBundle\Form\Type;
 
 use AppBundle\Entity\Orders;
 use Symfony\Component\Form\AbstractType;
@@ -12,11 +12,12 @@ class PhotoType extends AbstractType {
 
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('picture', FileType::class, [
+        $builder->add('photo', FileType::class, [
+            'label' => 'Picture',
             'attr' => [
                 'accept'  => 'image/*',
                 '@change' => 'onChange'
-            ],
+            ]
         ]);
     }
 

@@ -4,6 +4,7 @@ namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Orders
@@ -40,6 +41,7 @@ class Orders
      * @var string
      *
      * @ORM\Column(name="photo", type="string", length=255)
+     * @Assert\NotBlank()
      */
     private $photo;
 

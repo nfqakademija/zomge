@@ -2,6 +2,7 @@
 
 namespace AppBundle\Form;
 
+use AppBundle\Form\Type\PhotoType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
@@ -20,31 +21,20 @@ class BuyNowForm extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('picture', FileType::class, [
-                'attr' => [
-                    'accept' => 'image/*',
-                    '@change' => 'onChange'
-                ]
+            ->add('photo', PhotoType::class, [
+                'label_attr' => [
+                    'style' => 'display:none'
+                ],
             ])
-            ->add('name', TextType::class, [
-                'data' => $options['user']->getName(),
-            ])
-            ->add('phone_number', NumberType::class, [
-                'data' => $options['user']->getPhoneNumber(),
-            ])
-            ->add('address', TextType::class, [
-                'data' => $options['user']->getAddress(),
-            ])
-            ->add('city', TextType::class, [
-                'data' => $options['user']->getCity(),
-            ])
-            ->add('postal_code', NumberType::class, [
-                'data' => $options['user']->getPostalCode(),
-            ])
+            ->add('name', TextType::class)
+            ->add('phoneNumber', NumberType::class)
+            ->add('address', TextType::class)
+            ->add('city', TextType::class)
+            ->add('postalCode', NumberType::class)
             ->add('Buy', SubmitType::class, [
                 'attr' => [
                     'class' => 'btn-success',
-                    'formnovalidate' => 'formnovalite'
+                    'formnovalidate' => 'formnovalide'
                 ]
             ]);
     }
@@ -52,7 +42,7 @@ class BuyNowForm extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            'user' => null
+            'data_class' => 'AppBundle\Entity\User'
         ]);
     }
 

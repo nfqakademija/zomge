@@ -16,7 +16,8 @@
 /web/css
 /web/js
 /web/fonts
-/web/uploads
+!/web/uploads
+/web/uploads/*
 /node_modules
 .env
 npm-debug.log

@@ -6,6 +6,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * User
@@ -28,6 +29,7 @@ class User implements UserInterface
      * @var string
      *
      * @ORM\Column(name="name", type="string", length=255)
+     * @Assert\NotBlank()
      */
     private $name;
 
@@ -61,22 +63,26 @@ class User implements UserInterface
     private $facebookToken;
 
     /**
-     * @ORM\Column(name="phone_number", type="string")
+     * @ORM\Column(name="phone_number", type="string", nullable=true)
+     * @Assert\NotBlank()
      */
     private $phoneNumber;
 
     /**
-     * @ORM\Column(name="address", type="string")
+     * @ORM\Column(name="address", type="string", nullable=true)
+     * @Assert\NotBlank()
      */
     private $address;
 
     /**
-     * @ORM\Column(name="city", type="string")
+     * @ORM\Column(name="city", type="string", nullable=true)
+     * @Assert\NotBlank()
      */
     private $city;
 
     /**
-     * @ORM\Column(name="postal_code", type="string")
+     * @ORM\Column(name="postal_code", type="string", nullable=true)
+     * @Assert\NotBlank()
      */
     private $postalCode;
 
@@ -98,10 +104,16 @@ class User implements UserInterface
     private $updatedAt;
 
     /**
+     * @Assert\Type(type="AppBundle\Entity\Orders")
+     * @Assert\Valid()
+     */
+    private $photo;
+
+    /**
      * User constructor.
      * @param $orders
      */
-    public function __construct($orders)
+    public function __construct()
     {
         $this->orders = new ArrayCollection();
     }
@@ -336,6 +348,22 @@ class User implements UserInterface
     public function getCreatedAt()
     {
         return $this->createdAt;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPhoto()
+    {
+        return $this->photo;
+    }
+
+    /**
+     * @param mixed $photo
+     */
+    public function setPhoto(Orders $photo = null)
+    {
+        $this->photo = $photo;
     }
 
 }
