@@ -33,11 +33,6 @@ class BuyNowController extends Controller
 
             $fileName = $fileUploader->upload($file);
 
-            /*$user->setPhoneNumber($form->getPhoneNumber());
-            $user->setAddress($form->getAddress());
-            $user->setCity($form->getCity());
-            $user->setPostalCode($form->getPostalCode());*/
-
             $order = new Orders();
             $order->setOrderNumber($this->orderNumber());
             $order->setPhoto($fileName);

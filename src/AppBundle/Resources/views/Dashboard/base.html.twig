@@ -6,5 +6,9 @@
 
 {% block avanzu_page_subtitle %}{% endblock %}
 
+{% block avanzu_page_content %}
+    {{ include('@App/_flash.html.twig') }}
+{% endblock %}
+
 {% block avanzu_sidebar_search %}{% endblock %}
 {% block avanzu_navbar_control_sidebar_toggle %}{% endblock %}
