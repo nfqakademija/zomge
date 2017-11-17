@@ -28,6 +28,10 @@ class UserOrdersController extends Controller
      */
     public function viewOrderAction(Orders $order)
     {
+        if (!$this->isGranted('USER_ORDER', $order)) {
+            throw $this->createAccessDeniedException('NO!');
+        }
+
         return $this->render('AppBundle:Home:orders_view.html.twig', [
             'order' => $order
         ]);

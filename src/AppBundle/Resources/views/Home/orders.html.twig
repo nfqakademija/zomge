@@ -6,26 +6,32 @@
     <div class="container">
         <div class="row">
             <div class="col-sm-12">
-                <table class="table table-bordered table-striped">
-                    <thead>
-                    <tr>
-                        <th>Order No</th>
-                        <th>Order date</th>
-                        <th>Status</th>
-                        <th></th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    {% for order in orders %}
+                {% if orders is empty %}
+                    <div class="alert alert-info" role="alert">
+                        <strong>Attention!</strong> You don't have any orders yet :(
+                    </div>
+                {% else %}
+                    <table class="table table-bordered table-striped">
+                        <thead>
                         <tr>
-                            <td>{{ order.orderNumber }}</td>
-                            <td>{{ order.createdAt|date('Y-m-d') }}</td>
-                            <td>{{ order.status }}</td>
-                            <td><a href="{{ path('orders_view', {'orderNumber': order.orderNumber}) }}" class="btn btn-default">View</a></td>
+                            <th>Order No</th>
+                            <th>Order date</th>
+                            <th>Status</th>
+                            <th></th>
                         </tr>
-                    {% endfor %}
-                    </tbody>
-                </table>
+                        </thead>
+                        <tbody>
+                        {% for order in orders %}
+                            <tr>
+                                <td>{{ order.orderNumber }}</td>
+                                <td>{{ order.createdAt|date('Y-m-d') }}</td>
+                                <td>{{ order.status }}</td>
+                                <td><a href="{{ path('orders_view', {'orderNumber': order.orderNumber}) }}" class="btn btn-default">View</a></td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                {% endif %}
             </div>
         </div>
     </div>
