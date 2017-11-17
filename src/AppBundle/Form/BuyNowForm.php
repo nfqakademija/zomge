@@ -27,10 +27,10 @@ class BuyNowForm extends AbstractType
                 ],
             ])
             ->add('name', TextType::class)
-            ->add('phoneNumber', NumberType::class)
+            ->add('phoneNumber', TextType::class)
             ->add('address', TextType::class)
             ->add('city', TextType::class)
-            ->add('postalCode', NumberType::class)
+            ->add('postalCode', TextType::class)
             ->add('Buy', SubmitType::class, [
                 'attr' => [
                     'class' => 'btn-success',

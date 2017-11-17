@@ -8,10 +8,11 @@ use Symfony\Component\Security\Core\Authorization\Voter\Voter;
 
 class OrderVoter extends Voter
 {
+    const USER_ORDER = 'USER_ORDER';
 
     protected function supports($attribute, $object)
     {
-        if ($attribute != 'USER_ORDER') {
+        if ($attribute != self::USER_ORDER) {
             return false;
         }
         if (!$object instanceof Orders) {

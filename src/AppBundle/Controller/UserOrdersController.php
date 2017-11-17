@@ -3,6 +3,7 @@
 namespace AppBundle\Controller;
 
 use AppBundle\Entity\Orders;
+use AppBundle\Security\OrderVoter;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
@@ -28,9 +29,7 @@ class UserOrdersController extends Controller
      */
     public function viewOrderAction(Orders $order)
     {
-        if (!$this->isGranted('USER_ORDER', $order)) {
-            throw $this->createAccessDeniedException('NO!');
-        }
+        $this->denyAccessUnlessGranted(OrderVoter::USER_ORDER, $order);
 
         return $this->render('AppBundle:Home:orders_view.html.twig', [
             'order' => $order
