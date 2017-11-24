@@ -4,6 +4,8 @@
 
 {% block body %}
     <div class="container">
+        {% include "@App/_flash.html.twig" %}
+
         <div class="row">
             <div class="col-md-3 col-sm-12">
                 <div id="phone">
@@ -12,7 +14,7 @@
                 </div>
             </div>
             <div class="col-md-9 col-sm-12">
-                <div class="panel panel-success">
+                <div class="panel panel-primary">
                     <div class="panel-heading">Order #{{ order.orderNumber }}</div>
                     <div class="panel-body">
                         <p><strong>Name:</strong> {{ order.user.name }}</p>

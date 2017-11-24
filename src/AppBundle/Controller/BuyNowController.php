@@ -33,8 +33,10 @@ class BuyNowController extends Controller
 
             $fileName = $fileUploader->upload($file);
 
+            $orderNumber = $this->orderNumber();
+
             $order = new Orders();
-            $order->setOrderNumber($this->orderNumber());
+            $order->setOrderNumber($orderNumber);
             $order->setPhoto($fileName);
             $order->setUser($user);
             $order->setStatus('1');
@@ -44,7 +46,7 @@ class BuyNowController extends Controller
 
             $this->addFlash('success', 'Yay! Your order have been accepted.');
 
-            return $this->redirectToRoute('buy_now');
+            return $this->redirectToRoute('orders_view', ['orderNumber' => $orderNumber]);
         }
 
         return $this->render('AppBundle:Home:buy_now.html.twig', array(
