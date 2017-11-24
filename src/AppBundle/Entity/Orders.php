@@ -190,6 +190,13 @@ class Orders
         return $this->status;
     }
 
+    public function setCreatedAt($createdAt)
+    {
+        $this->createdAt = $createdAt;
+
+        return $createdAt;
+    }
+
     /**
      * Get created at
      *

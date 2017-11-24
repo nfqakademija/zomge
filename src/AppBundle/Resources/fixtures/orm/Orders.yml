@@ -1,0 +1,7 @@
+AppBundle\Entity\Orders:
+  orders{1..100}:
+    user: '@user*'
+    order_number: '<swiftBicNumber()>'
+    photo: '<sha256()>.jpeg'
+    status: '1'
+    createdAt: '<dateTimeBetween("-2 years", "now")>'
