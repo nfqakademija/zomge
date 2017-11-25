@@ -197,6 +197,13 @@ class Orders
         }
     }
 
+    public function setCreatedAt($createdAt)
+    {
+        $this->createdAt = $createdAt;
+
+        return $createdAt;
+    }
+
     /**
      * Get created at
      *

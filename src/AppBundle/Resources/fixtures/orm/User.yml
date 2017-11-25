@@ -1,0 +1,18 @@
+AppBundle\Entity\User:
+  user_admin:
+    name: 'Nerijus Bukartas'
+    email: 'krekas@gmail.com'
+    facebookId: '10215410556756110'
+    facebookToken: 'EAAVKF0ixD44BAFZBM6uK8vzW9ZBS3bryHLHHVUdFKKhs7Beh6ugFZASnr5sEJL2uVoJcckdMkCmQyNouP57cHG2oh24Ic6fRflASHYWapZC87ZCJIZCIY4PwENY33miTW4udaSZCLDEg7HXsdgV6ZCZAuhgyXY63To82zA4nj1ufyuQZDZD'
+    roles: '[ROLE_ADMIN]'
+
+  user{1..100}:
+    name: '<firstName()> <lastName()>'
+    email: '<safeEmail()>'
+    facebookId: '<numberBetween(1, 99999)>'
+    facebookToken: '<sha256()>'
+    roles: '[ROLE_USER]'
+    phoneNumber: '<phoneNumber()>'
+    address: '<streetAddress()>'
+    city: '<city()>'
+    postalCode: '<postcode()>'
