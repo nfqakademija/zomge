@@ -3,5 +3,5 @@ AppBundle\Entity\Orders:
     user: '@user*'
     order_number: '<swiftBicNumber()>'
     photo: '<sha256()>.jpeg'
-    status: '1'
+    status: '<numberBetween(1, 3)>'
     createdAt: '<dateTimeBetween("-2 years", "now")>'
