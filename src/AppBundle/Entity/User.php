@@ -29,7 +29,7 @@ class User implements UserInterface
      * @var string
      *
      * @ORM\Column(name="name", type="string", length=255)
-     * @Assert\NotBlank()
+     * @Assert\NotBlank(groups={"user"})
      */
     private $name;
 
@@ -37,6 +37,7 @@ class User implements UserInterface
      * @var string
      *
      * @ORM\Column(name="email", type="string", length=255, unique=true)
+     * @Assert\NotBlank(groups={"user"})
      */
     private $email;
 
@@ -64,25 +65,25 @@ class User implements UserInterface
 
     /**
      * @ORM\Column(name="phone_number", type="string", nullable=true)
-     * @Assert\NotBlank()
+     * @Assert\NotBlank(groups={"user"})
      */
     private $phoneNumber;
 
     /**
      * @ORM\Column(name="address", type="string", nullable=true)
-     * @Assert\NotBlank()
+     * @Assert\NotBlank(groups={"user"})
      */
     private $address;
 
     /**
      * @ORM\Column(name="city", type="string", nullable=true)
-     * @Assert\NotBlank()
+     * @Assert\NotBlank(groups={"user"})
      */
     private $city;
 
     /**
      * @ORM\Column(name="postal_code", type="string", nullable=true)
-     * @Assert\NotBlank()
+     * @Assert\NotBlank(groups={"user"})
      */
     private $postalCode;
 

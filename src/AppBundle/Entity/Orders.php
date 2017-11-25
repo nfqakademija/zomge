@@ -41,15 +41,16 @@ class Orders
      * @var string
      *
      * @ORM\Column(name="photo", type="string", length=255)
-     * @Assert\NotBlank()
-     * @Assert\Image()
+     * @Assert\NotBlank(groups={"buy"})
+     * @Assert\Image(groups={"buy"})
      */
     private $photo;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="status", type="string", length=255)
+     * @ORM\Column(name="status", type="integer", options={"default":"1"})
+     * @Assert\NotNull(groups={"set_status"})
      */
     private $status;
 
@@ -187,7 +188,13 @@ class Orders
      */
     public function getStatus()
     {
-        return $this->status;
+        if ($this->status == 1) {
+            return 'Accepted';
+        } elseif ($this->status == 2) {
+            return 'Shipped';
+        } else {
+            return 'Fulfilled';
+        }
     }
 
     /**

@@ -34,6 +34,7 @@
 {% block avanzu_page_subtitle %}View order #{{ order.orderNumber }}{% endblock %}
 
 {% block avanzu_page_content %}
+    {{ parent() }}
 
     <div class="row">
         <div class="col-md-3 col-sm-12">
@@ -58,6 +59,15 @@
                     <p><strong>City:</strong> {{ order.user.city }}</p>
                     <p><strong>Postal code:</strong> {{ order.user.postalCode }}</p>
                     <p><strong>Phone no.:</strong> {{ order.user.phoneNumber }}</p>
+                </div>
+            </div>
+
+            <div class="box box-primary">
+                <div class="box-header with-border">
+                    <h3 class="box-title">Status</h3>
+                </div>
+                <div class="box-body">
+                    {{ form(form) }}
                 </div>
             </div>
         </div>

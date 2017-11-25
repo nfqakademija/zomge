@@ -3,6 +3,8 @@
 namespace AppBundle\Controller;
 
 use AppBundle\Entity\Orders;
+use AppBundle\Form\AdminSetOrderStatusForm;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
@@ -29,13 +31,27 @@ class OrdersController extends Controller
 
     /**
      * @Route("/{id}/view", name="admin_orders_view")
-     * @param Orders $order
+     * @param Orders  $order
+     * @param Request $request
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function viewAction(Orders $order)
+    public function viewAction(Orders $order, Request $request)
     {
+        $form = $this->createForm(AdminSetOrderStatusForm::class, $order);
+
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $em = $this->getDoctrine()->getManager();
+            $em->flush();
+
+            $this->addFlash('success', 'Order status updated successfully!');
+
+            return $this->redirectToRoute('admin_orders_view', ['id' => $order->getId()]);
+        }
+
         return $this->render('AppBundle:Dashboard:orders_view.html.twig', [
-            'order' => $order
+            'order' => $order,
+            'form' => $form->createView()
         ]);
     }
 }

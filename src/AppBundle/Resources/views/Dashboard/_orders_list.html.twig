@@ -4,6 +4,7 @@
         <th>ID</th>
         <th>Order No</th>
         <th>Created at</th>
+        <th>Status</th>
         <th></th>
     </tr>
     </thead>
@@ -13,6 +14,7 @@
             <td>{{ order.id }}</td>
             <td>{{ order.orderNumber }}</td>
             <td>{{ order.createdAt|date('Y-m-d') }}</td>
+            <td>{{ order.status }}</td>
             <td><a href="{{ path('admin_orders_view', {'id': order.id}) }}" class="btn btn-default">View</a></td>
         </tr>
     {% endfor %}
