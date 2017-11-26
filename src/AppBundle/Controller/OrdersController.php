@@ -18,14 +18,22 @@ class OrdersController extends Controller
      * @Route("/", name="admin_orders_index")
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function indexAction()
+    public function indexAction(Request $request)
     {
         $orders = $this->getDoctrine()
             ->getRepository('AppBundle:Orders')
             ->findAll();
 
+        /** @var $paginator \Knp\Component\Pager\Paginator */
+        $paginator = $this->get('knp_paginator');
+        $result = $paginator->paginate(
+            $orders,
+            $request->query->getInt('page', 1),
+            $request->query->getInt('limit', $this->getParameter('pagination_number'))
+        );
+
         return $this->render('AppBundle:Dashboard:orders_index.html.twig', [
-            'orders' => $orders
+            'orders' => $result
         ]);
     }
 

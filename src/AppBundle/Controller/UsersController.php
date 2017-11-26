@@ -58,11 +58,19 @@ class UsersController extends Controller
      * @param User $user
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function viewOrderAction(User $user)
+    public function viewOrderAction(User $user, Request $request)
     {
+        /** @var $paginator \Knp\Component\Pager\Paginator */
+        $paginator = $this->get('knp_paginator');
+        $result = $paginator->paginate(
+            $user->getOrders(),
+            $request->query->getInt('page', 1),
+            $request->query->getInt('limit', $this->getParameter('pagination_number'))
+        );
+
         return $this->render('AppBundle:Dashboard:users_orders.html.twig', [
             'user' => $user,
-            'orders' => $user->getOrders()
+            'orders' => $result
         ]);
     }
 }

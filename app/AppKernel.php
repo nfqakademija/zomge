@@ -21,6 +21,7 @@ class AppKernel extends Kernel
             new Avanzu\AdminThemeBundle\AvanzuAdminThemeBundle(),
             new Knp\Bundle\MenuBundle\KnpMenuBundle(),
             new Stof\DoctrineExtensionsBundle\StofDoctrineExtensionsBundle(),
+            new Knp\Bundle\PaginatorBundle\KnpPaginatorBundle(),
 
             new AppBundle\AppBundle(),
         );

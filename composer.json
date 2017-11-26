@@ -29,7 +29,8 @@
         "knpuniversity/oauth2-client-bundle": "^1.12",
         "avanzu/admin-theme-bundle": "dev-feature/2.0",
         "knplabs/knp-menu-bundle": "^2.1",
-        "stof/doctrine-extensions-bundle": "^1.2"
+        "stof/doctrine-extensions-bundle": "^1.2",
+        "knplabs/knp-paginator-bundle": "^2.6"
     },
     "require-dev": {
         "fzaninotto/faker": "*",

@@ -21,3 +21,5 @@ parameters:
 
     facebook_id: 1488838747819918
     facebook_secret: f3c51118b310a499a0d7ce54f43ab219
+
+    pagination_number: 20
