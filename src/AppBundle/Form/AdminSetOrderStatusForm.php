@@ -31,7 +31,7 @@ class AdminSetOrderStatusForm extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            'data_class' => 'AppBundle\Entity\Orders',
+            'data_class'        => 'AppBundle\Entity\Orders',
             'validation_groups' => ['set_status']
         ]);
     }

@@ -188,6 +188,11 @@ class Orders
      */
     public function getStatus()
     {
+        return $this->status;
+    }
+
+    public function getReadableStatus()
+    {
         if ($this->status == 1) {
             return 'Accepted';
         } elseif ($this->status == 2) {
