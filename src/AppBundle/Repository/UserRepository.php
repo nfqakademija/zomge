@@ -19,11 +19,24 @@ class UserRepository extends EntityRepository
             ->execute();
     }
 
+    /**
+     * @return mixed
+     */
     public function getUsersCount()
     {
         return $this->createQueryBuilder('user')
             ->select('COUNT(user)')
             ->getQuery()
             ->execute();
+    }
+
+    /**
+     * @return \Doctrine\ORM\Query
+     */
+    public function getAllUsers()
+    {
+        $em = $this->getEntityManager();
+
+        return $em->createQuery('SELECT u from AppBundle:User u');
     }
 }

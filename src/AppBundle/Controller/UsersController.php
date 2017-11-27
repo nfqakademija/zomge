@@ -21,9 +21,9 @@ class UsersController extends Controller
      */
     public function indexAction(Request $request)
     {
-        $users = $this->getDoctrine()
-            ->getRepository('AppBundle:User')
-            ->findAll();
+        $em = $this->getDoctrine()->getManager();
+        $users = $em->getRepository('AppBundle:User')
+            ->getAllUsers();
 
         /** @var $paginator \Knp\Component\Pager\Paginator */
         $paginator = $this->get('knp_paginator');
