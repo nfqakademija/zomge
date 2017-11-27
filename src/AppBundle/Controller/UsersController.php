@@ -56,7 +56,7 @@ class UsersController extends Controller
 
             $this->addFlash('success', 'User updated!');
 
-            return $this->redirectToRoute('admin_users_index');
+            return $this->redirectToRoute('admin_users_index', ['id' => $user->getId()]);
         }
 
         return $this->render('AppBundle:Dashboard:users_edit.html.twig', [
@@ -67,6 +67,7 @@ class UsersController extends Controller
     /**
      * @Route("/{id}/orders", name="admin_users_orders")
      * @param User $user
+     * @param Request $request
      * @return \Symfony\Component\HttpFoundation\Response
      */
     public function viewOrderAction(User $user, Request $request)
