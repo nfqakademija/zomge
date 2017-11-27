@@ -4,6 +4,34 @@
 
 {% block avanzu_page_content %}
     <div class="row">
+        {# Orders Count #}
+        <div class="col-md-6">
+            <div class="small-box bg-green">
+                <div class="inner">
+                    <h3>{{ fulfilledOrdersCount[0][1] }}</h3>
+                    <p>Fulfilled Orders</p>
+                </div>
+                <div class="icon">
+                    <i class="ion ion-bag"></i>
+                </div>
+            </div>
+        </div>
+
+        {# Users Count #}
+        <div class="col-md-6">
+            <div class="small-box bg-aqua">
+                <div class="inner">
+                    <h3>{{ usersCount[0][1] }}</h3>
+                    <p>Registered Users</p>
+                </div>
+                <div class="icon">
+                    <i class="ion ion-person-add"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
         {# Latest users #}
         <div class="col-md-6">
             <div class="box box-info">

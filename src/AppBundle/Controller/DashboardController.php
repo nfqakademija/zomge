@@ -8,8 +8,8 @@ use Symfony\Component\Routing\Annotation\Route;
 /**
  * @Route("/admin")
  */
-class DashboardController extends Controller
-{
+class DashboardController extends Controller {
+
     /**
      * @Route("/", name="admin_index")
      */
@@ -20,12 +20,20 @@ class DashboardController extends Controller
         $latestUsers = $em->getRepository('AppBundle:User')
             ->getLatestTenUsers();
 
+        $usersCount = $em->getRepository('AppBundle:User')
+            ->getUsersCount();
+
         $latestOrders = $em->getRepository('AppBundle:Orders')
-            ->getLatestTenUsers();
+            ->getLatestTenOrders();
+
+        $fulfilledOrdersCount = $em->getRepository('AppBundle:Orders')
+            ->getFulfilledOrdersCount();
 
         return $this->render('AppBundle:Dashboard:index.html.twig', [
-            'latestUsers' => $latestUsers,
-            'latestOrders' => $latestOrders
+            'latestUsers'          => $latestUsers,
+            'usersCount'           => $usersCount,
+            'latestOrders'         => $latestOrders,
+            'fulfilledOrdersCount' => $fulfilledOrdersCount
         ]);
     }
 
