@@ -75,7 +75,7 @@ class UsersController extends Controller
         $this->getDoctrine()
             ->getManager()
             ->getRepository('AppBundle:User')
-            ->getUserOrdersQuery($user->getId());
+            ->getUserOrdersQuery($user);
 
         /** @var $paginator \Knp\Component\Pager\Paginator */
         $paginator = $this->get('knp_paginator');

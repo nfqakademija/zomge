@@ -43,10 +43,10 @@ class UserRepository extends EntityRepository
     /**
      * @return \Doctrine\ORM\Query
      */
-    public function getUserOrdersQuery($userId)
+    public function getUserOrdersQuery($user)
     {
         return $this->getEntityManager()
-            ->createQuery('SELECT o FROM AppBundle:Orders o WHERE o.user_id = :userId')
-            ->setParameter('userId', $userId);
+            ->createQuery('SELECT o FROM AppBundle:Orders o WHERE o.user_id = :user')
+            ->setParameter('userId', $user);
     }
 }
