@@ -7,7 +7,13 @@
 
     <div class="box">
         <div class="box-body">
-            {% include 'AppBundle:Dashboard:_orders_list.html.twig' %}
+            {% if orders is empty %}
+                <div class="alert alert-info" role="alert">
+                    This user hasn't made any orders yet.
+                </div>
+            {% else %}
+                {% include 'AppBundle:Dashboard:_orders_list.html.twig' %}
+            {% endif %}
         </div>
     </div>
 
