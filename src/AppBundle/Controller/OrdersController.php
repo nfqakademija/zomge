@@ -21,8 +21,9 @@ class OrdersController extends Controller
     public function indexAction(Request $request)
     {
         $orders = $this->getDoctrine()
+            ->getManager()
             ->getRepository('AppBundle:Orders')
-            ->findAll();
+            ->getOrdersQuery();
 
         /** @var $paginator \Knp\Component\Pager\Paginator */
         $paginator = $this->get('knp_paginator');

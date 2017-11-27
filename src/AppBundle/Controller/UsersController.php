@@ -21,9 +21,10 @@ class UsersController extends Controller
      */
     public function indexAction(Request $request)
     {
-        $em = $this->getDoctrine()->getManager();
-        $users = $em->getRepository('AppBundle:User')
-            ->getAllUsers();
+        $users = $this->getDoctrine()
+            ->getManager()
+            ->getRepository('AppBundle:User')
+            ->getUserQuery();
 
         /** @var $paginator \Knp\Component\Pager\Paginator */
         $paginator = $this->get('knp_paginator');
@@ -70,6 +71,11 @@ class UsersController extends Controller
      */
     public function viewOrderAction(User $user, Request $request)
     {
+        $this->getDoctrine()
+            ->getManager()
+            ->getRepository('AppBundle:User')
+            ->getUserOrdersQuery($user->getId());
+
         /** @var $paginator \Knp\Component\Pager\Paginator */
         $paginator = $this->get('knp_paginator');
         $result = $paginator->paginate(

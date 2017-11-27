@@ -2,13 +2,14 @@
 
 namespace AppBundle\Repository;
 
+use AppBundle\Entity\User;
 use Doctrine\ORM\EntityRepository;
 
 class UserRepository extends EntityRepository
 {
 
     /**
-     * @return mixed
+     * @return User[]
      */
     public function getLatestTenUsers()
     {
@@ -20,7 +21,7 @@ class UserRepository extends EntityRepository
     }
 
     /**
-     * @return mixed
+     * @return User[]
      */
     public function getUsersCount()
     {
@@ -33,10 +34,19 @@ class UserRepository extends EntityRepository
     /**
      * @return \Doctrine\ORM\Query
      */
-    public function getAllUsers()
+    public function getUserQuery()
     {
-        $em = $this->getEntityManager();
+        return $this->getEntityManager()
+            ->createQuery('SELECT u from AppBundle:User u');
+    }
 
-        return $em->createQuery('SELECT u from AppBundle:User u');
+    /**
+     * @return \Doctrine\ORM\Query
+     */
+    public function getUserOrdersQuery($userId)
+    {
+        return $this->getEntityManager()
+            ->createQuery('SELECT o FROM AppBundle:Orders o WHERE o.user_id = :userId')
+            ->setParameter('userId', $userId);
     }
 }

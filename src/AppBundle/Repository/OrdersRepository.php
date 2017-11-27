@@ -2,10 +2,15 @@
 
 namespace AppBundle\Repository;
 
+use AppBundle\Entity\Orders;
 use Doctrine\ORM\EntityRepository;
 
 class OrdersRepository extends EntityRepository
 {
+
+    /**
+     * @return Orders[]
+     */
     public function getLatestTenOrders()
     {
         return $this->createQueryBuilder('orders')
@@ -15,6 +20,9 @@ class OrdersRepository extends EntityRepository
             ->execute();
     }
 
+    /**
+     * @return Orders[]
+     */
     public function getFulfilledOrdersCount()
     {
         return $this->createQueryBuilder('orders')
@@ -23,5 +31,14 @@ class OrdersRepository extends EntityRepository
             ->setParameter('status', 3)
             ->getQuery()
             ->execute();
+    }
+
+    /**
+     * @return \Doctrine\ORM\Query
+     */
+    public function getOrdersQuery()
+    {
+        return $this->getEntityManager()
+            ->createQuery('SELECT o from AppBundle:Orders o');
     }
 }
