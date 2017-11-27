@@ -35,14 +35,18 @@ class UserEditForm extends AbstractType
                 ]]
             )
             ->add('Update', SubmitType::class, [
-                'attr' => ['class' => 'btn-success']
+                'attr' => [
+                    'class' => 'btn-success',
+                    'formnovalidate' => 'formnovalide'
+                ]
             ]);
     }
 
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            'data_class' => 'AppBundle\Entity\User'
+            'data_class' => 'AppBundle\Entity\User',
+            'validation_groups' => ['user'],
         ]);
     }
 
