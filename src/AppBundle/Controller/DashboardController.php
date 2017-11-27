@@ -15,8 +15,17 @@ class DashboardController extends Controller
      */
     public function indexAction()
     {
+        $em = $this->getDoctrine()->getManager();
+
+        $latestUsers = $em->getRepository('AppBundle:User')
+            ->getLatestTenUsers();
+
+        $latestOrders = $em->getRepository('AppBundle:Orders')
+            ->getLatestTenUsers();
+
         return $this->render('AppBundle:Dashboard:index.html.twig', [
-            // ...
+            'latestUsers' => $latestUsers,
+            'latestOrders' => $latestOrders
         ]);
     }
 

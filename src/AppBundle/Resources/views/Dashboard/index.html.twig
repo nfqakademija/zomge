@@ -3,8 +3,77 @@
 {% block avanzu_page_title %}Dashboard{% endblock %}
 
 {% block avanzu_page_content %}
-    <h1>Welcome to the Dashboard:index page</h1>
+    <div class="row">
+        {# Latest users #}
+        <div class="col-md-6">
+            <div class="box box-info">
+                <div class="box-header with-border">
+                    <h3 class="box-title">Latest users</h3>
+                </div>
+                <div class="box-body">
+                    <table class="table table-bordered table-striped">
+                        <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Registered</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for user in latestUsers %}
+                            <tr>
+                                <td>{{ user.id }}</td>
+                                <td>{{ user.name }}</td>
+                                <td>{{ user.email }}</td>
+                                <td>{{ user.createdAt|date('Y-m-d') }}</td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+                <div class="box-footer clearfix">
+                    <a href="{{ path('admin_users_index') }}" class="btn btn-sm btn-default btn-flat pull-right">View All Users</a>
+                </div>
+            </div>
+        </div>
 
-    testing
+        {# Latest orders #}
+        <div class="col-md-6">
+            <div class="box box-success">
+                <div class="box-header with-border">
+                    <div class="title with-border">
+                        <h3 class="box-title">Latest orders</h3>
+                    </div>
+                </div>
+                <div class="box-body">
+                    <table class="table table-bordered table-striped">
+                        <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Order No</th>
+                            <th>Created at</th>
+                            <th>Status</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for order in latestOrders %}
+                            <tr>
+                                <td>{{ order.id }}</td>
+                                <td>{{ order.orderNumber }}</td>
+                                <td>{{ order.createdAt|date('Y-m-d') }}</td>
+                                <td>{{ order.readableStatus }}</td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+                <div class="box-footer clearfix">
+                    <a href="{{ path('admin_orders_index') }}" class="btn btn-sm btn-default btn-flat pull-right">View All Orders</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
 
 {% endblock %}
