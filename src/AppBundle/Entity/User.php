@@ -82,7 +82,7 @@ class User implements UserInterface
     private $city;
 
     /**
-     * @ORM\Column(name="postal_code", type="string", nullable=true)
+     * @ORM\Column(name="postal_code", type="integer", nullable=true)
      * @Assert\NotBlank(groups={"user"})
      */
     private $postalCode;
