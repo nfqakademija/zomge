@@ -38,8 +38,10 @@ class BuyNowController extends Controller
             $order = new Orders();
             $order->setOrderNumber($orderNumber);
             $order->setPhoto($fileName);
+            $order->setBackPanel($form->getBackPanel());
+            $order->setBackPanelPrice($form->getBackPanel());
             $order->setUser($user);
-            $order->setStatus('1');
+            $order->setStatus(1);
 
             $em->persist($order);
             $em->flush();

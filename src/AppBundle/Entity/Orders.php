@@ -49,10 +49,20 @@ class Orders
     /**
      * @var string
      *
-     * @ORM\Column(name="status", type="integer", options={"default":"1"})
+     * @ORM\Column(name="status", type="integer", columnDefinition="ENUM('1', '2', '3')", options={"default":"1"})
      * @Assert\NotNull(groups={"set_status"})
      */
     private $status;
+
+    /**
+     * @ORM\Column(name="back_panel", type="string")
+     */
+    private $backPanel;
+
+    /**
+     * @ORM\Column(name="back_panel_price", type="decimal", precision=8, scale=2)
+     */
+    private $backPanelPrice;
 
     /**
      * @var \DateTime
@@ -217,6 +227,47 @@ class Orders
     public function getCreatedAt()
     {
         return $this->createdAt;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getBackPanel()
+    {
+        return $this->backPanel;
+    }
+
+    /**
+     * @param mixed $backPanel
+     */
+    public function setBackPanel($backPanel)
+    {
+        $this->backPanel = $backPanel;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getBackPanelPrice()
+    {
+        return $this->backPanelPrice;
+    }
+
+    /**
+     * @param mixed $backPanel
+     * @return float
+     */
+    public function setBackPanelPrice($backPanel)
+    {
+        if ($backPanel == 'metal') {
+            $this->backPanelPrice = '50.00';
+        } elseif ($backPanel == 'glass') {
+            $this->backPanelPrice = '100.00';
+        } else {
+            $this->backPanelPrice = 0;
+        }
+
+        return $this->backPanelPrice;
     }
 
 }

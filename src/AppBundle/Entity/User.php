@@ -111,8 +111,13 @@ class User implements UserInterface
     private $photo;
 
     /**
+     * @Assert\Type(type="AppBundle\Entity\Orders")
+     */
+    private $backPanel;
+
+    /**
      * User constructor.
-     * @param $orders
+     * @internal param $orders
      */
     public function __construct()
     {
@@ -365,6 +370,22 @@ class User implements UserInterface
     public function setPhoto(Orders $photo = null)
     {
         $this->photo = $photo;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getBackPanel()
+    {
+        return $this->backPanel;
+    }
+
+    /**
+     * @param mixed $backPanel
+     */
+    public function setBackPanel($backPanel)
+    {
+        $this->backPanel = $backPanel;
     }
 
 }

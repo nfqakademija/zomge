@@ -4,6 +4,7 @@ namespace AppBundle\Form;
 
 use AppBundle\Form\Type\PhotoType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
@@ -11,12 +12,11 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class BuyNowForm extends AbstractType
-{
+class BuyNowForm extends AbstractType {
 
     /**
      * @param FormBuilderInterface $builder
-     * @param array                $options
+     * @param array $options
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
@@ -26,6 +26,13 @@ class BuyNowForm extends AbstractType
                     'style' => 'display:none'
                 ],
             ])
+            ->add('backPanel', ChoiceType::class, [
+                'choices' => [
+                    'Plastic (+0€)' => 'plastic',
+                    'Metal (+50€)'  => 'metal',
+                    'Glass (+100€)' => 'glass'
+                ]
+            ])
             ->add('name', TextType::class)
             ->add('phoneNumber', TextType::class)
             ->add('address', TextType::class)
@@ -33,7 +40,7 @@ class BuyNowForm extends AbstractType
             ->add('postalCode', TextType::class)
             ->add('Buy', SubmitType::class, [
                 'attr' => [
-                    'class' => 'btn-success',
+                    'class'          => 'btn-success',
                     'formnovalidate' => 'formnovalide'
                 ]
             ]);
@@ -42,7 +49,7 @@ class BuyNowForm extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            'data_class' => 'AppBundle\Entity\User',
+            'data_class'        => 'AppBundle\Entity\User',
             'validation_groups' => [
                 'buy',
                 'user'
