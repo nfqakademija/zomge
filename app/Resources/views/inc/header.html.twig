@@ -22,13 +22,14 @@
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{ app.user.name }} <span class="caret"></span></a>
                         <ul class="dropdown-menu">
+                            <li><a href="{{ path('users_profile') }}">My Profile</a></li>
                             <li><a href="{{ path('users_orders') }}">Orders</a></li>
                             <li role="separator" class="divider"></li>
                             <li><a href="{{ path('security_logout') }}">Logout</a></li>
                         </ul>
                     </li>
                     {% if is_granted('ROLE_ADMIN') %}
-                        <li class="pr-1"><a href="{{ path('admin_index') }}">ADMIN PANEL</a></li>
+                        <li><a href="{{ path('admin_index') }}">ADMIN PANEL</a></li>
                     {% endif %}
                 {% else %}
                     <li><a href="{{ path('connect_facebook') }}" class="mr-1">Login with Facebook</a></li>

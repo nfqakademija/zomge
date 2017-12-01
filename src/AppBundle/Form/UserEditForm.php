@@ -22,7 +22,7 @@ class UserEditForm extends AbstractType
         $builder
             ->add('name')
             ->add('email')
-            ->add('phoneNumber', NumberType::class)
+            ->add('phoneNumber', TextType::class)
             ->add('address', TextType::class)
             ->add('city', TextType::class)
             ->add('postalCode', NumberType::class)
