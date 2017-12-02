@@ -16,6 +16,7 @@ class OrdersController extends Controller
 
     /**
      * @Route("/", name="admin_orders_index")
+     * @param Request $request
      * @return \Symfony\Component\HttpFoundation\Response
      */
     public function indexAction(Request $request)

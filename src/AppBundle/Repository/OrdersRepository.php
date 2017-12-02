@@ -9,6 +9,20 @@ class OrdersRepository extends EntityRepository
 {
 
     /**
+     * @param $user
+     * @return Orders[]
+     */
+    public function orderByNewest($user)
+    {
+        return $this->createQueryBuilder('orders')
+            ->where('orders.user = :user')
+            ->setParameter('user', $user)
+            ->orderBy('orders.id', 'DESC')
+            ->getQuery()
+            ->execute();
+    }
+
+    /**
      * @return Orders[]
      */
     public function getLatestTenOrders()

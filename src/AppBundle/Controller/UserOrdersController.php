@@ -17,8 +17,13 @@ class UserOrdersController extends Controller
      */
     public function indexAction()
     {
+        $orders = $this->getDoctrine()
+        ->getManager()
+        ->getRepository('AppBundle:Orders')
+        ->orderByNewest($this->getUser());
+
         return $this->render('AppBundle:Home:orders.html.twig', [
-            'orders' => $this->getUser()->getOrders()
+            'orders' => $orders
         ]);
     }
 

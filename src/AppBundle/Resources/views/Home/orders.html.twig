@@ -25,7 +25,7 @@
                             <tr>
                                 <td>{{ order.orderNumber }}</td>
                                 <td>{{ order.createdAt|date('Y-m-d') }}</td>
-                                <td>{{ order.status }}</td>
+                                <td>{{ order.readableStatus }}</td>
                                 <td><a href="{{ path('orders_view', {'orderNumber': order.orderNumber}) }}" class="btn btn-default">View</a></td>
                             </tr>
                         {% endfor %}
