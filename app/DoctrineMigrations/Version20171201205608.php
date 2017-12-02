@@ -16,7 +16,7 @@ class Version20171201205608 extends AbstractMigration
         $this->abortIf($this->connection->getDatabasePlatform()->getName() !== 'mysql', 'Migration can only be executed safely on \'mysql\'.');
 
         $this->addSql('ALTER TABLE users CHANGE postal_code postal_code INT DEFAULT NULL');
-        $this->addSql('ALTER TABLE orders CHANGE status status ENUM(\'1\', \'2\', \'3\'), CHANGE back_panel_price back_panel_price NUMERIC(8, 2) NOT NULL');
+        $this->addSql('ALTER TABLE orders CHANGE back_panel_price back_panel_price NUMERIC(8, 0) NOT NULL');
     }
 
     public function down(Schema $schema)

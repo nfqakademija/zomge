@@ -49,7 +49,7 @@ class Orders
     /**
      * @var string
      *
-     * @ORM\Column(name="status", type="integer", columnDefinition="ENUM('1', '2', '3')", options={"default":"1"})
+     * @ORM\Column(name="status", type="integer", options={"default":"1"})
      * @Assert\NotNull(groups={"set_status"})
      */
     private $status;
@@ -60,7 +60,7 @@ class Orders
     private $backPanel;
 
     /**
-     * @ORM\Column(name="back_panel_price", type="decimal", precision=8, scale=2)
+     * @ORM\Column(name="back_panel_price", type="decimal", precision=8, scale=0)
      */
     private $backPanelPrice;
 
