@@ -6,6 +6,10 @@
 
 {% block avanzu_page_subtitle %}{% endblock %}
 
+{% block avanzu_navbar_user %}
+    {{ include('@App/Dashboard/_navbar_user.html.twig') }}
+{% endblock %}
+
 {% block avanzu_page_content %}
     {{ include('@App/_flash.html.twig') }}
 {% endblock %}
