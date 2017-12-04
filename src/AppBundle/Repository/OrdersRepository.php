@@ -53,6 +53,6 @@ class OrdersRepository extends EntityRepository
     public function getOrdersQuery()
     {
         return $this->getEntityManager()
-            ->createQuery('SELECT o from AppBundle:Orders o');
+            ->createQuery('SELECT o from AppBundle:Orders o ORDER BY o.id DESC');
     }
 }

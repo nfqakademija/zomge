@@ -70,6 +70,32 @@
                     {{ form(form) }}
                 </div>
             </div>
+
+            <div class="box box-warning">
+                <table class="table">
+                    <thead>
+                    <th>Item</th>
+                    <th class="col-md-1">Price</th>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>Zomge Q1</td>
+                        <td>399&euro;</td>
+                    </tr>
+                    <tr>
+                        <td>Back panel material: {{ order.backPanel }}</td>
+                        <td>{{ order.backPanelPrice }}&euro;</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <div class="text-right" style="margin-right: 1em;">
+                                <h4>Total price: {{ 399 + order.backPanelPrice }}&euro;</h4>
+                            </div>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
 
