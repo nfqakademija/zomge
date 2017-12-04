@@ -37,7 +37,7 @@ class UserRepository extends EntityRepository
     public function getUserQuery()
     {
         return $this->getEntityManager()
-            ->createQuery('SELECT u from AppBundle:User u');
+            ->createQuery('SELECT u from AppBundle:User u ORDER BY u.id DESC');
     }
 
     /**
