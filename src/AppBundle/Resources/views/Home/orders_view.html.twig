@@ -14,6 +14,12 @@
                 </div>
             </div>
             <div class="col-md-9 col-sm-12">
+                <div class="clearfix">
+                    <a href="{{ path('pay_order', {'orderNumber': order.orderNumber}) }}" type="button" class="btn btn-success col-sm-12 mb-1">
+                        <i class="glyphicon glyphicon-credit-card mr-1"></i>
+                        Pay
+                    </a>
+                </div>
                 <div class="panel panel-primary">
                     <div class="panel-heading">Order #{{ order.orderNumber }}</div>
                     <div class="panel-body">
