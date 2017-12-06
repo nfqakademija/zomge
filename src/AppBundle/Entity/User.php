@@ -388,5 +388,20 @@ class User implements UserInterface
         $this->backPanel = $backPanel;
     }
 
+    /**
+     * @param mixed $backPanel
+     * @return float
+     */
+    public function setBackPanelPrice($backPanel)
+    {
+        if ($backPanel == 'metal') {
+            return '50.00';
+        } elseif ($backPanel == 'glass') {
+            return '100.00';
+        } else {
+            return 0;
+        }
+    }
+
 }
 

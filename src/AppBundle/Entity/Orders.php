@@ -70,6 +70,11 @@ class Orders
     private $isPaid;
 
     /**
+     * @ORM\Column(name="total_price", type="decimal", precision=8, scale=0)
+     */
+    private $totalPrice;
+
+    /**
      * @var \DateTime
      *
      * @ORM\Column(name="created_at", type="datetime")
@@ -291,6 +296,9 @@ class Orders
         $this->isPaid = $isPaid;
     }
 
+    /**
+     * @return string
+     */
     public function getReadableIsPaid()
     {
         if ($this->isPaid) {
@@ -298,6 +306,22 @@ class Orders
         }
 
         return 'Waiting for payment';
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getTotalPrice()
+    {
+        return $this->totalPrice;
+    }
+
+    /**
+     * @param mixed $totalPrice
+     */
+    public function setTotalPrice($totalPrice)
+    {
+        $this->totalPrice = $totalPrice;
     }
 
 }

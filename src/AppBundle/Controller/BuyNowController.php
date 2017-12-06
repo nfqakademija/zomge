@@ -35,11 +35,15 @@ class BuyNowController extends Controller
 
             $orderNumber = $this->orderNumber();
 
+            $totalPrice = 399 + $form->setBackPanelPrice($form->getBackPanel());
+
             $order = new Orders();
             $order->setOrderNumber($orderNumber);
             $order->setPhoto($fileName);
             $order->setBackPanel($form->getBackPanel());
             $order->setBackPanelPrice($form->getBackPanel());
+            $order->setTotalPrice($totalPrice);
+            $order->setIsPaid(0);
             $order->setUser($user);
             $order->setStatus(1);
 
