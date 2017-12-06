@@ -14,12 +14,14 @@
                 </div>
             </div>
             <div class="col-md-9 col-sm-12">
-                <div class="clearfix">
-                    <a href="{{ path('pay_order', {'orderNumber': order.orderNumber}) }}" type="button" class="btn btn-success col-sm-12 mb-1">
-                        <i class="glyphicon glyphicon-credit-card mr-1"></i>
-                        Pay
-                    </a>
-                </div>
+                {% if not order.isPaid %}
+                    <div class="clearfix">
+                        <a href="{{ path('pay_order', {'orderNumber': order.orderNumber}) }}" type="button" class="btn btn-success col-sm-12 mb-1">
+                            <i class="glyphicon glyphicon-credit-card mr-1"></i>
+                            Pay
+                        </a>
+                    </div>
+                {% endif %}
                 <div class="panel panel-primary">
                     <div class="panel-heading">Order #{{ order.orderNumber }}</div>
                     <div class="panel-body">
@@ -28,6 +30,13 @@
                         <p><strong>City:</strong> {{ order.user.city }}</p>
                         <p><strong>Postal code:</strong> {{ order.user.postalCode }}</p>
                         <p><strong>Phone no.:</strong> {{ order.user.phoneNumber }}</p>
+                    </div>
+                </div>
+
+                <div class="panel panel-success">
+                    <div class="panel-heading">Payment status</div>
+                    <div class="panel-body">
+                        {{ order.readableIsPaid }}
                     </div>
                 </div>
 

@@ -5,6 +5,7 @@
         <th>Order No</th>
         <th>Created at</th>
         <th>Status</th>
+        <th>Payment state</th>
         <th></th>
     </tr>
     </thead>
@@ -15,6 +16,7 @@
             <td>{{ order.orderNumber }}</td>
             <td>{{ order.createdAt|date('Y-m-d') }}</td>
             <td>{{ order.readableStatus }}</td>
+            <td>{{ order.readableIsPaid }}</td>
             <td><a href="{{ path('admin_orders_view', {'id': order.id}) }}" class="btn btn-default">View</a></td>
         </tr>
     {% endfor %}

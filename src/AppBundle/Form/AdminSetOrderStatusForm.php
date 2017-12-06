@@ -19,7 +19,8 @@ class AdminSetOrderStatusForm extends AbstractType
                     'Accepted'  => 1,
                     'Shipped'   => 2,
                     'Fulfilled' => 3
-                ]
+                ],
+                'label' => 'Order status'
             ])
             ->add('Change', SubmitType::class, [
                 'attr' => [

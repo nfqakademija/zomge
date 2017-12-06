@@ -10,4 +10,5 @@ AppBundle\Entity\Orders:
     backPanel: '<randomElement($backPanels)>'
     backPanelPrice: '<randomElement($backPanelPrices)>'
     status: '<numberBetween(1, 3)>'
+    isPaid: '<numberBetween(0, 1)>'
     createdAt: '<dateTimeBetween("-2 years", "now")>'

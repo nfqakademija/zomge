@@ -65,6 +65,11 @@ class Orders
     private $backPanelPrice;
 
     /**
+     * @ORM\Column(name="is_paid", type="boolean", options={"default": false})
+     */
+    private $isPaid;
+
+    /**
      * @var \DateTime
      *
      * @ORM\Column(name="created_at", type="datetime")
@@ -268,6 +273,31 @@ class Orders
         }
 
         return $this->backPanelPrice;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getIsPaid()
+    {
+        return $this->isPaid;
+    }
+
+    /**
+     * @param mixed $isPaid
+     */
+    public function setIsPaid($isPaid)
+    {
+        $this->isPaid = $isPaid;
+    }
+
+    public function getReadableIsPaid()
+    {
+        if ($this->isPaid) {
+            return 'Paid';
+        }
+
+        return 'Waiting for payment';
     }
 
 }
