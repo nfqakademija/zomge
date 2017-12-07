@@ -11,6 +11,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Session\Session;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\Security\Core\Authorization\AuthorizationChecker;
 
 class BuyNowController extends Controller
 {
@@ -57,7 +58,11 @@ class BuyNowController extends Controller
      */
     public function stepTwoAction(Request $request)
     {
-        $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
+        if (! $this->getUser()) {
+            $this->addFlash('warning', 'You need to login.');
+
+            return $this->redirectToRoute('login');
+        }
 
         $user = $this->getUser();
 
