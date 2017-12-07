@@ -31,6 +31,10 @@ class BuyNowController extends Controller
      */
     public function stepOneAction(Request $request, FileUploader $fileUploader)
     {
+        if ($this->session->get('photo') && $this->session->get('backPanel')) {
+            return $this->redirectToRoute('step_two');
+        }
+
         $form = $this->createForm(BuyNowStepOneForm::class);
 
         $form->handleRequest($request);
@@ -89,6 +93,8 @@ class BuyNowController extends Controller
 
             $em->persist($order);
             $em->flush();
+
+            $this->session->clear();
 
             $this->addFlash('success', 'Yay! Your order have been accepted.');
 
