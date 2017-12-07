@@ -20,7 +20,7 @@ class PayController extends Controller
         $this->denyAccessUnlessGranted(OrderVoter::USER_ORDER, $order);
 
         $em = $this->getDoctrine()->getManager();
-        $order->setStatus(2);
+        $order->setIsPaid(1);
         $em->flush();
 
         $this->addFlash('success', 'Yay! Your order have been been.');
