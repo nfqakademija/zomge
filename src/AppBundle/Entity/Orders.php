@@ -90,6 +90,10 @@ class Orders implements \Serializable
      */
     private $updatedAt;
 
+    /**
+     * @see \Serializable::serialize()
+     * @return string
+     */
     public function serialize()
     {
         return serialize(array(
@@ -98,26 +102,16 @@ class Orders implements \Serializable
         ));
     }
 
+    /**
+     * @see \Serializable::unserialize()
+     * @param string $serialized
+     */
     public function unserialize($serialized)
     {
         list (
             $this->id
             ) = unserialize($serialized);
     }
-
-    /*public function __sleep()
-    {
-        $ref   = new \ReflectionClass(__CLASS__);
-        $props = $ref->getProperties(\ReflectionProperty::IS_PROTECTED);
-
-        $serialize_fields = array();
-
-        foreach ($props as $prop) {
-            $serialize_fields[] = $prop->name;
-        }
-
-        return $serialize_fields;
-    }*/
 
     /**
      * Get id
@@ -226,6 +220,11 @@ class Orders implements \Serializable
         return $this->status;
     }
 
+    /**
+     * Get readable status
+     *
+     * @return string
+     */
     public function getReadableStatus()
     {
         if ($this->status == 1) {
@@ -237,6 +236,10 @@ class Orders implements \Serializable
         }
     }
 
+    /**
+     * @param $createdAt
+     * @return mixed
+     */
     public function setCreatedAt($createdAt)
     {
         $this->createdAt = $createdAt;

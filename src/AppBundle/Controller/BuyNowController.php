@@ -3,8 +3,8 @@
 namespace AppBundle\Controller;
 
 use AppBundle\Entity\Orders;
-use AppBundle\Entity\User;
 use AppBundle\Form\BuyNowForm;
+use AppBundle\Form\BuyNowStepTwoForm;
 use AppBundle\Service\FileUploader;
 use AppBundle\Form\BuyNowStepOneForm;
 use Symfony\Component\HttpFoundation\Request;
@@ -15,12 +15,20 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 class BuyNowController extends Controller
 {
 
+    private $session;
+
+    public function __construct(Session $session)
+    {
+        $this->session = $session;
+    }
+
     /**
      * @Route("/buy_now", name="step_one")
-     * @param Request $request
+     * @param Request      $request
+     * @param FileUploader $fileUploader
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function stepOneAction(Request $request)
+    public function stepOneAction(Request $request, FileUploader $fileUploader)
     {
         $form = $this->createForm(BuyNowStepOneForm::class);
 
@@ -28,10 +36,11 @@ class BuyNowController extends Controller
         if ($form->isSubmitted() && $form->isValid()) {
             $form = $form->getData();
 
-            $session = new Session();
+            $file = $form->getPhoto();
+            $fileName = $fileUploader->upload($file);
 
-//            $session->set('photo', $form->getPhoto());
-            $session->set('backPanel', $form->getBackPanel());
+            $this->session->set('photo', $fileName);
+            $this->session->set('backPanel', $form->getBackPanel());
 
             return $this->redirectToRoute('step_two');
         }
@@ -43,41 +52,31 @@ class BuyNowController extends Controller
 
     /**
      * @Route("/buy_now/2", name="step_two")
-     * @param Request $request
+     * @param Request      $request
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
      */
     public function stepTwoAction(Request $request)
     {
-        dump($request->headers->get('referer'));die;
-    }
+        $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
 
-    /**
-     * @param Request      $request
-     * @param FileUploader $fileUploader
-     * @return \Symfony\Component\HttpFoundation\Response
-     */
-    public function indexAction(Request $request, FileUploader $fileUploader)
-    {
         $user = $this->getUser();
-        $form = $this->createForm(BuyNowForm::class, $user);
+
+        $form = $this->createForm(BuyNowStepTwoForm::class, $user);
 
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $form = $form->getData();
 
-            $file = $form->getPhoto()->getPhoto();
-
-            $fileName = $fileUploader->upload($file);
-
             $orderNumber = $this->orderNumber();
 
-            $totalPrice = 399 + $form->setBackPanelPrice($form->getBackPanel());
+            $totalPrice = 399 + $form->setBackPanelPrice($this->session->get('backPanel'));
 
             $order = new Orders();
             $order->setOrderNumber($orderNumber);
-            $order->setPhoto($fileName);
-            $order->setBackPanel($form->getBackPanel());
-            $order->setBackPanelPrice($form->getBackPanel());
+            $order->setPhoto($this->session->get('photo'));
+            $order->setBackPanel($this->session->get('backPanel'));
+            $order->setBackPanelPrice($this->session->get('backPanel'));
             $order->setTotalPrice($totalPrice);
             $order->setIsPaid(0);
             $order->setUser($user);
@@ -91,9 +90,9 @@ class BuyNowController extends Controller
             return $this->redirectToRoute('orders_view', ['orderNumber' => $orderNumber]);
         }
 
-        return $this->render('buy_now_step_one.html.twig', array(
+        return $this->render('AppBundle:Home:buy_now_step_two.html.twig', [
             'form' => $form->createView()
-        ));
+        ]);
     }
 
     /**
