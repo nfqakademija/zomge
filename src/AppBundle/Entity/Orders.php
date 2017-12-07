@@ -12,7 +12,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  * @ORM\Table(name="orders")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\OrdersRepository")
  */
-class Orders
+class Orders implements \Serializable
 {
     /**
      * @var int
@@ -90,7 +90,22 @@ class Orders
      */
     private $updatedAt;
 
-    public function __sleep()
+    public function serialize()
+    {
+        return serialize(array(
+            $this->id,
+            $this->photo
+        ));
+    }
+
+    public function unserialize($serialized)
+    {
+        list (
+            $this->id
+            ) = unserialize($serialized);
+    }
+
+    /*public function __sleep()
     {
         $ref   = new \ReflectionClass(__CLASS__);
         $props = $ref->getProperties(\ReflectionProperty::IS_PROTECTED);
@@ -102,7 +117,7 @@ class Orders
         }
 
         return $serialize_fields;
-    }
+    }*/
 
     /**
      * Get id

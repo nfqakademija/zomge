@@ -6,15 +6,51 @@ use AppBundle\Entity\Orders;
 use AppBundle\Entity\User;
 use AppBundle\Form\BuyNowForm;
 use AppBundle\Service\FileUploader;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use AppBundle\Form\BuyNowStepOneForm;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\HttpFoundation\Session\Session;
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 class BuyNowController extends Controller
 {
 
     /**
-     * @Route("/buy_now", name="buy_now")
+     * @Route("/buy_now", name="step_one")
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function stepOneAction(Request $request)
+    {
+        $form = $this->createForm(BuyNowStepOneForm::class);
+
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $form = $form->getData();
+
+            $session = new Session();
+
+//            $session->set('photo', $form->getPhoto());
+            $session->set('backPanel', $form->getBackPanel());
+
+            return $this->redirectToRoute('step_two');
+        }
+
+        return $this->render('AppBundle:Home:buy_now_step_one.html.twig', [
+            'form' => $form->createView()
+        ]);
+    }
+
+    /**
+     * @Route("/buy_now/2", name="step_two")
+     * @param Request $request
+     */
+    public function stepTwoAction(Request $request)
+    {
+        dump($request->headers->get('referer'));die;
+    }
+
+    /**
      * @param Request      $request
      * @param FileUploader $fileUploader
      * @return \Symfony\Component\HttpFoundation\Response
@@ -55,7 +91,7 @@ class BuyNowController extends Controller
             return $this->redirectToRoute('orders_view', ['orderNumber' => $orderNumber]);
         }
 
-        return $this->render('AppBundle:Home:buy_now.html.twig', array(
+        return $this->render('buy_now_step_one.html.twig', array(
             'form' => $form->createView()
         ));
     }
