@@ -27,5 +27,4 @@ class OrderVoter extends Voter
             return true;
         }
     }
-
 }

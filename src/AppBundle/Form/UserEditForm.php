@@ -32,8 +32,8 @@ class UserEditForm extends AbstractType
                 'choices' => [
                     'Admin' => 'ROLE_ADMIN',
                     'User' => 'ROLE_USER',
-                ]]
-            )
+                ]
+            ])
             ->add('Update', SubmitType::class, [
                 'attr' => [
                     'class' => 'btn-success',

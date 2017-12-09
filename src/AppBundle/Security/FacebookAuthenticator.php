@@ -88,4 +88,5 @@ class FacebookAuthenticator extends SocialAuthenticator
     {
         return new RedirectResponse($this->router->generate('homepage'));
     }
+
 }
