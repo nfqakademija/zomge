@@ -120,5 +120,4 @@ class BuyNowController extends Controller
         }
         return $randomString;
     }
-
 }

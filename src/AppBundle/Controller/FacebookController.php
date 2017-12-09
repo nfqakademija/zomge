@@ -35,5 +35,4 @@ class FacebookController extends Controller
     public function logoutAction()
     {
     }
-
 }

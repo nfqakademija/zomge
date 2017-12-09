@@ -37,5 +37,4 @@ class DashboardController extends Controller
             'fulfilledOrdersCount' => $fulfilledOrdersCount
         ]);
     }
-
 }

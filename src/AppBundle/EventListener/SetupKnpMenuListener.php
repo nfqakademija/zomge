@@ -40,5 +40,4 @@ class SetupKnpMenuListener
                 'childOptions' => $event->getChildOptions()
             ])->setLabelAttribute('icon', 'fa fa-shopping-cart');
     }
-
 }

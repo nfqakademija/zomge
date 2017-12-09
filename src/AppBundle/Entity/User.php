@@ -402,6 +402,4 @@ class User implements UserInterface
             return 0;
         }
     }
-
 }
-

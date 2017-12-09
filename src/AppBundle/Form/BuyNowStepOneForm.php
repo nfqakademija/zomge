@@ -20,7 +20,8 @@ class BuyNowStepOneForm extends AbstractType {
                 'attr'  => [
                     'accept'  => 'image/*',
                     '@change' => 'onChange'
-            ]])
+                ]
+            ])
             ->add('backPanel', ChoiceType::class, [
                 'choices' => [
                     'Plastic (+0€)' => 'plastic',

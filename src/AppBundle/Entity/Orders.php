@@ -341,5 +341,4 @@ class Orders implements \Serializable
     {
         $this->totalPrice = $totalPrice;
     }
-
 }

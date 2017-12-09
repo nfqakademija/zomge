@@ -26,5 +26,7 @@ class OrderVoter extends Voter
         if ($subject->getUser() == $token->getUser()) {
             return true;
         }
+
+        return false;
     }
 }
