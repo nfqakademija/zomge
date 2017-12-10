@@ -2,15 +2,6 @@
 
 {% block title %}Homepage - {{ parent() }}{% endblock %}
 
-{% block stylesheets %}
-    {{ parent() }}
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-
-    <style>
-
-    </style>
-{% endblock %}
-
 {% block jumbotron %}
     <div class="container pt-1 pb-3">
         <div class="row">
@@ -21,26 +12,13 @@
                         <div class="col-xs-12 text-center">
                             <h3 class="text-white">Starting from 399&euro;</h3>
                         </div>
-                    </div>
-                    <ul class="small-info">
-                        <div class="row">
-                            <div class="col-md-6 col-xs-12">
-                                <li>Snapdragon™ 835</li>
-                            </div>
-                            <div class="col-md-6 col-xs-12">
-                                <li>4GB LPDDR4X</li>
-                            </div>
-                            <div class="col-md-6 col-xs-12">
-                                <li>IP68 water and dust resistant</li>
-                            </div>
-                            <div class="col-md-6 col-xs-12">
-                                <li>QHD+ Display</li>
-                            </div>
+                        <div class="col-xs-12 text-center">
+                            <h3 class="text-white">A phone with customizable back</h3>
                         </div>
-                    </ul>
+                    </div>
             </div>
 
-            <div class="col-lg-4 hidden-xs hidden-sm hidden-md">
+            <div class="col-lg-4 hidden-xs hidden-sm hidden-md flex-row">
                 <img src="{{ asset('images/phone1.png') }}" alt="" class="img-responsive">
             </div>
         </div>
@@ -65,59 +43,35 @@
     </div>
 
     <div class="container mt-4">
-        <h4 class="mb-3"><strong>Basic Parameters</strong></h4>
+        <h3 class="mb-3"><strong>Basic Parameters</strong></h3>
 
         <div class="row">
-            <div class="col-md-6 col-xs-6">
+            <div class="col-md-6 col-xs-12">
                 <strong>Dimensions</strong>
                 <p>148.9 x 68.1 x 8 mm</p>
             </div>
-            <div class="col-md-6 col-xs-6">
-                <strong>Sensors</strong>
-                <p>Iris scanner, fingerprint (rear-mounted), accelerometer, gyro, proximity, compass, barometer, heart rate, SpO2</p>
-            </div>
-            <div class="col-md-6 col-xs-6">
+            <div class="col-md-6 col-xs-12">
                 <strong>Weight</strong>
                 <p>155g</p>
             </div>
-            <div class="col-md-6 col-xs-6">
-                <strong>Color</strong>
-                <p>Midnight Black</p>
-            </div>
-            <div class="col-md-6 col-xs-6">
+            <div class="col-md-6 col-xs-12">
                 <strong>Battery</strong>
                 <p>Non-removable Li-Ion 3000 mAh battery</p>
             </div>
-            <div class="col-md-6 col-xs-6">
+            <div class="col-md-6 col-xs-12">
                 <strong>Operating System</strong>
                 <p>Android 8.0 Oreo</p>
             </div>
-            <div class="col-md-6 col-xs-6">
+            <div class="col-md-6 col-xs-12">
                 <strong>CPU</strong>
                 <p>Qualcomm MSM8998 Snapdragon 835 (Octa-core, 10nm, up to 2.45Ghz)</p>
             </div>
-            <div class="col-md-6 col-xs-6">
-                <strong>Ports</strong>
-                <p>3.1, Type-C 1.0 reversible connector</p>
-                <p>3.5mm audio jack</p>
-            </div>
-            <div class="col-md-6 col-xs-6">
+            <div class="col-md-6 col-xs-12">
                 <strong>GPU</strong>
                 <p>Adreno 540</p>
             </div>
-        </div>
-
-        <hr>
-
-        <h4 class="mb-3"><strong>In The Box</strong></h4>
-
-        <div class="row">
-            <div class="col-md-12 col-xs-12">
-                <p>Zomge Q1</p>
-                <p>USB-C to USB-C cable</p>
-                <p>USB-C charging plug</p>
-                <p>Quick Start Guide</p>
-                <p>Sim Tray Ejector</p>
+            <div class="col-xs-12 text-center no-flex">
+                <a href="{{ path('specs') }}" class="btn btn-lg btn-inverse btn-primary mt-2">MORE SPECIFICATIONS</a>
             </div>
         </div>
     </div>

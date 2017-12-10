@@ -18,4 +18,13 @@ class HomeController extends Controller
     {
         return $this->render('AppBundle:Home:index.html.twig', []);
     }
+
+    /**
+     * @Route("/specs", name="specs")
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function specsAction()
+    {
+        return $this->render('AppBundle:Home:specs.html.twig', []);
+    }
 }

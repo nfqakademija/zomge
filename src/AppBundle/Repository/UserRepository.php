@@ -41,6 +41,7 @@ class UserRepository extends EntityRepository
     }
 
     /**
+     * @param $user
      * @return \Doctrine\ORM\Query
      */
     public function getUserOrdersQuery($user)
