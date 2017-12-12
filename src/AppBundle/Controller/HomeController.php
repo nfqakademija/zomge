@@ -16,7 +16,16 @@ class HomeController extends Controller
      */
     public function indexAction()
     {
-        return $this->render('AppBundle:Home:index.html.twig', []);
+        $orders = $this->getDoctrine()
+            ->getManager()
+            ->getRepository('AppBundle:Orders')
+            ->getFourRandomOrderImages();
+
+//        dump($orders);die;
+
+        return $this->render('AppBundle:Home:index.html.twig', [
+            'orders' => $orders
+        ]);
     }
 
     /**

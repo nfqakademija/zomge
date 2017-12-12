@@ -55,4 +55,20 @@ class OrdersRepository extends EntityRepository
         return $this->getEntityManager()
             ->createQuery('SELECT o from AppBundle:Orders o ORDER BY o.id DESC');
     }
+
+    /**
+     * @return Orders[]
+     */
+    public function getFourRandomOrderImages()
+    {
+        return $this->createQueryBuilder('orders')
+            ->select('orders.photo')
+            ->where('orders.status = :status')
+            ->setMaxResults(4)
+            ->orderBy('orders.id', 'DESC')
+            ->setParameter('status', 3)
+            ->getQuery()
+            ->execute();
+
+    }
 }

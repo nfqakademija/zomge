@@ -49,6 +49,10 @@ nav li a:hover, nav .open > a {
   nav li a {
     color: #fff !important;
   }
+
+  .block .col-xs-6:nth-last-of-type(-n+2) {
+    margin-top: 2rem;
+  }
 }
 
 .row {

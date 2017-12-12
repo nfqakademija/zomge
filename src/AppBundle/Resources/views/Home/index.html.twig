@@ -74,5 +74,26 @@
                 <a href="{{ path('specs') }}" class="btn btn-lg btn-inverse btn-primary mt-2">MORE SPECIFICATIONS</a>
             </div>
         </div>
+
     </div>
+        <div class="block">
+            <div class="block__inner">
+                <div class="container">
+                    <div class="text-center">
+                        <h2><strong>SHOWCASE</strong></h2>
+                        <h4 class="mb-2">SEE WHAT OTHERS MADE</h4>
+                    </div>
+                    <div class="row">
+                        {% for order in orders %}
+                        <div class="col-md-3 col-xs-6">
+                            <div id="phone">
+                                <img src="/uploads/{{ order.photo }}">
+                                <img src="{{ asset('images/camera.png') }}" alt="Camera" id="camera">
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
 {% endblock %}
