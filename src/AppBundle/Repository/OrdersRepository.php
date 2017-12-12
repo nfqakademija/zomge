@@ -69,6 +69,5 @@ class OrdersRepository extends EntityRepository
             ->setParameter('status', 3)
             ->getQuery()
             ->execute();
-
     }
 }
