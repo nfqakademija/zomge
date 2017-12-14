@@ -65,7 +65,7 @@ class BuyNowController extends Controller
         if (! $this->getUser()) {
             $this->addFlash('warning', 'You need to login.');
 
-            return $this->redirectToRoute('login');
+            return $this->redirectToRoute('user_login');
         }
 
         $user = $this->getUser();

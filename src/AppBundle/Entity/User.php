@@ -29,7 +29,7 @@ class User implements UserInterface
      * @var string
      *
      * @ORM\Column(name="name", type="string", length=255)
-     * @Assert\NotBlank(groups={"user"})
+     * @Assert\NotBlank(groups={"user", "register"})
      */
     private $name;
 
@@ -37,7 +37,7 @@ class User implements UserInterface
      * @var string
      *
      * @ORM\Column(name="email", type="string", length=255, unique=true)
-     * @Assert\NotBlank(groups={"user"})
+     * @Assert\NotBlank(groups={"user", "register"})
      */
     private $email;
 
@@ -45,6 +45,12 @@ class User implements UserInterface
      * @ORM\Column(type="string", nullable=true)
      */
     private $password;
+
+    /**
+     * @Assert\NotBlank(groups={"register"})
+     * @Assert\Length(max=4096, groups={"register"})
+     */
+    private $plainPassword;
 
     /**
      * @var string
@@ -64,7 +70,7 @@ class User implements UserInterface
     private $facebookPhoto;
 
     /**
-     * @ORM\Column(name="facebook_token", type="string")
+     * @ORM\Column(name="facebook_token", type="string", nullable=true)
      */
     private $facebookToken;
 
@@ -239,6 +245,22 @@ class User implements UserInterface
     public function getPassword()
     {
         return $this->password;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPlainPassword()
+    {
+        return $this->plainPassword;
+    }
+
+    /**
+     * @param mixed $plainPassword
+     */
+    public function setPlainPassword($plainPassword): void
+    {
+        $this->plainPassword = $plainPassword;
     }
 
     public function getSalt()
