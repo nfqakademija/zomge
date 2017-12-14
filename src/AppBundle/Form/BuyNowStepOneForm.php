@@ -23,11 +23,6 @@ class BuyNowStepOneForm extends AbstractType
                     'accept'  => 'image/*',
                     '@change' => 'onChange'
                 ],
-                /*'constraints' => [
-                    new File([
-                        'maxSize' => '2M'
-                    ])
-                */
             ])
             ->add('backPanel', ChoiceType::class, [
                 'choices' => [
