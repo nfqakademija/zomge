@@ -28,6 +28,10 @@ class AuthenticationListener
      */
     public function onSuccess(InteractiveLoginEvent $event)
     {
+        if ($event->getRequest()->getPathInfo() !== '/connect/facebook/check') {
+            return;
+        }
+
         $token = $event->getAuthenticationToken()->getUser()->getFacebookToken();
 
         $client = $this->clientRegistry->getClient('facebook_main');

@@ -42,9 +42,14 @@ class User implements UserInterface
     private $email;
 
     /**
+     * @ORM\Column(type="string", nullable=true)
+     */
+    private $password;
+
+    /**
      * @var string
      *
-     * @ORM\Column(name="facebook_id", type="string", length=255)
+     * @ORM\Column(name="facebook_id", type="string", length=255, nullable=true)
      */
     private $facebookId;
 
@@ -182,6 +187,7 @@ class User implements UserInterface
         return $this->email;
     }
 
+
     /**
      * Set facebookId
      *
@@ -200,7 +206,7 @@ class User implements UserInterface
      * Get facebookId
      *
      * @return string
-     */
+    r */
     public function getFacebookId()
     {
         return $this->facebookId;
@@ -222,9 +228,17 @@ class User implements UserInterface
         $this->roles = $roles;
     }
 
+    /**
+     * @param mixed $password
+     */
+    public function setPassword($password)
+    {
+        $this->password = $password;
+    }
+
     public function getPassword()
     {
-        // TODO: Implement getPassword() method.
+        return $this->password;
     }
 
     public function getSalt()

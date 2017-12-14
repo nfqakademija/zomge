@@ -4,11 +4,12 @@ namespace AppBundle\Form;
 
 use AppBundle\Entity\Orders;
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\Validator\Constraints\File;
+use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
-use Symfony\Component\Form\FormBuilderInterface;
-use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 
 class BuyNowStepOneForm extends AbstractType
 {
@@ -21,7 +22,12 @@ class BuyNowStepOneForm extends AbstractType
                 'attr'  => [
                     'accept'  => 'image/*',
                     '@change' => 'onChange'
-                ]
+                ],
+                /*'constraints' => [
+                    new File([
+                        'maxSize' => '2M'
+                    ])
+                */
             ])
             ->add('backPanel', ChoiceType::class, [
                 'choices' => [
