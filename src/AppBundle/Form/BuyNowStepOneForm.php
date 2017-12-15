@@ -11,7 +11,8 @@ use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 
-class BuyNowStepOneForm extends AbstractType {
+class BuyNowStepOneForm extends AbstractType
+{
 
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
