@@ -11,8 +11,7 @@ use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 
-class BuyNowStepOneForm extends AbstractType
-{
+class BuyNowStepOneForm extends AbstractType {
 
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
@@ -20,8 +19,9 @@ class BuyNowStepOneForm extends AbstractType
             ->add('photo', FileType::class, [
                 'label' => 'Picture',
                 'attr'  => [
-                    'accept'  => 'image/*',
-                    '@change' => 'onChange'
+                    'accept'    => 'image/*',
+                    '@change'   => 'onChange',
+                    'data-help' => 'Choice photo which will be on your phones back.'
                 ],
             ])
             ->add('backPanel', ChoiceType::class, [
@@ -29,6 +29,9 @@ class BuyNowStepOneForm extends AbstractType
                     'Plastic (+0€)' => 'plastic',
                     'Metal (+50€)'  => 'metal',
                     'Glass (+100€)' => 'glass'
+                ],
+                'attr' => [
+                    'data-help' => 'Choice your phones back material.'
                 ]
             ])
             ->add('Next', SubmitType::class, [
@@ -42,7 +45,7 @@ class BuyNowStepOneForm extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => Orders::class,
+            'data_class'        => Orders::class,
             'validation_groups' => [
                 'buy'
             ],
