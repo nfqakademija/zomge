@@ -8,24 +8,50 @@
         
         <div class="row">
             <div class="col-md-7 col-md-offset-3">
+                <div class="headline text-center">
+                    <span>LOGIN</span>
+                </div>
+
                 {% if error %}
                     <div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
                 {% endif %}
 
-                <form action="{{ path('user_login') }}" method="post">
-                    <label for="username">Email:</label>
-                    <input type="text" id="username" name="_username" value="{{ last_username }}" />
+                <form action="{{ path('user_login') }}" method="post" class="form-horizontal flex-form">
+                    <div style="align-items: flex-start">
+                    <div class="form-group flex">
+                        <label for="username" class="col-sm-6 control-label flex">Email:</label>
+                        <div class="col-sm-6">
+                            <input type="text" id="username" name="_username" value="{{ last_username }}" class="form-group" />
+                        </div>
+                    </div>
 
-                    <label for="password">Password:</label>
-                    <input type="password" id="password" name="_password" />
+                    <div class="form-group flex">
+                        <label for="password" class="col-sm-6 control-label flex">Password:</label>
+                        <div class="col-sm-6">
+                            <input type="password" id="password" name="_password" class="form-group" />
+                        </div>
+                    </div>
+                    </div>
 
-                    <button type="submit">login</button>
+                    <div class="form-group">
+                            <button type="submit" class="btn btn-success">Sign in</button>
+                    </div>
                 </form>
+
+                <div class="headline text-center mt-1">
+                    <span>OR</span>
+                </div>
 
                 <a href="{{ path('connect_facebook') }}" class="btn btn-lg btn-primary col-sm-12">
                     <i class="fa fa-facebook-official" aria-hidden="true"></i>
                     Login with Facebook
                 </a>
+
+                <div class="headline text-center mt-3">
+                    <span>REGISTER</span>
+                </div>
+
+                <p class="text-center">If you want to register click <a href="{{ path('user_registration') }}">here</a>.</p>
             </div>
         </div>
     </div>
@@ -35,4 +61,37 @@
     {{ parent() }}
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <style>
+        .headline {
+            display: block;
+            position: relative;
+            margin-bottom: 20px;
+        }
+        .headline > span {
+            display: inline-block;
+            position: relative;
+            background: #fff;
+            padding: 0 2rem 0 2rem;
+            font-size: 2rem;
+        }
+        .headline:before, .headline:after {
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: 0;
+            width: 100%;
+            border: 0;
+            border-top: 1px solid #e9e9e9;
+            z-index: -1;
+        }
+        .flex {
+            display: flex;
+        }
+        .flex-form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+    </style>
 {% endblock %}

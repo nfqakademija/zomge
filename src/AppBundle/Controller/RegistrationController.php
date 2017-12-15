@@ -20,6 +20,10 @@ class RegistrationController extends Controller
      */
     public function indexAction(Request $request, UserPasswordEncoderInterface $passwordEncoder)
     {
+        if ($this->getUser()) {
+            return $this->redirectToRoute('homepage');
+        }
+
         $user = new User();
         $form = $this->createForm(RegisterForm::class, $user);
 
