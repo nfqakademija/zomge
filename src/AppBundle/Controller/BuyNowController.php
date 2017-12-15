@@ -3,15 +3,14 @@
 namespace AppBundle\Controller;
 
 use AppBundle\Entity\Orders;
-use AppBundle\Form\BuyNowForm;
 use AppBundle\Form\BuyNowStepTwoForm;
 use AppBundle\Service\FileUploader;
 use AppBundle\Form\BuyNowStepOneForm;
+use AppBundle\Service\MailSender;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Session\Session;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Symfony\Component\Security\Core\Authorization\AuthorizationChecker;
 
 class BuyNowController extends Controller
 {
@@ -60,7 +59,7 @@ class BuyNowController extends Controller
      * @param Request      $request
      * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
      */
-    public function stepTwoAction(Request $request)
+    public function stepTwoAction(Request $request, MailSender $sender)
     {
         if (! $this->getUser()) {
             $this->addFlash('warning', 'You need to login.');
@@ -95,6 +94,8 @@ class BuyNowController extends Controller
             $em->flush();
 
             $this->session->clear();
+
+            $sender->sendEmail($order);
 
             $this->addFlash('success', 'Yay! Your order have been accepted.');
 
