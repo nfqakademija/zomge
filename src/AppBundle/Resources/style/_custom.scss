@@ -30,6 +30,25 @@
   }
 }
 
+.btn-danger {
+  &.btn-inverse {
+    @include button-variant($btn-danger-bg, $btn-danger-color, $btn-danger-bg);
+    &:hover {
+      @include button-variant($btn-danger-color, $btn-danger-bg, $btn-danger-border);
+    }
+  }
+  &.btn-transparent {
+    @include button-variant($btn-danger-bg, transparent, $btn-danger-bg);
+    &:hover {
+      @include button-variant($btn-danger-bg, darken($btn-danger-bg, 25%), $btn-danger-bg);
+    }
+  }
+}
+
+.w-200 {
+  width: 200px !important;
+}
+
 .dimensions {
   justify-content: center;
 }

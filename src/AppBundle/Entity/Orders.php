@@ -42,7 +42,7 @@ class Orders implements \Serializable
      *
      * @ORM\Column(name="photo", type="string", length=255)
      * @Assert\NotBlank(groups={"buy"})
-     * @Assert\Image(maxSize = "1024k", groups={"buy"})
+     * @Assert\Image(maxSize = "2M", groups={"buy"})
      */
     private $photo;
 
