@@ -7,7 +7,9 @@ use AppBundle\Form\RegisterForm;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Core\Authentication\Token\UsernamePasswordToken;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
+use Symfony\Component\Security\Http\Event\InteractiveLoginEvent;
 
 class RegistrationController extends Controller
 {
@@ -37,11 +39,28 @@ class RegistrationController extends Controller
             $em->persist($user);
             $em->flush();
 
+            $this->autoLoginUser($request, $user);
+
             return $this->redirectToRoute('homepage');
         }
 
         return $this->render('AppBundle:Home:register.html.twig', [
                 'form' => $form->createView()
         ]);
+    }
+
+    /**
+     * @param Request $request
+     * @param         $user
+     */
+    protected function autoLoginUser(Request $request, $user)
+    {
+        $token = new UsernamePasswordToken($user, null, 'main', $user->getRoles());
+        $this->get('security.token_storage')->setToken($token);
+
+        $this->get('session')->set('_security_main', serialize($token));
+
+        $event = new InteractiveLoginEvent($request, $token);
+        $this->get("event_dispatcher")->dispatch("security.interactive_login", $event);
     }
 }

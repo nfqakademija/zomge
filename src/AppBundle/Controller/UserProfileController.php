@@ -17,6 +17,10 @@ class UserProfileController extends Controller
      */
     public function indexAction(Request $request)
     {
+        if (! $this->getUser()) {
+            return $this->redirectToRoute('homepage');
+        }
+
         $form = $this->createForm(MyProfileForm::class, $this->getUser());
 
         $form->handleRequest($request);
